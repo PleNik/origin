@@ -9,36 +9,20 @@ class Address {
     int apartamentNumber = 0;
 
 public:
-    void setCity(std::string& city) {
+    Address(std::string& city, std::string& street, int houseNumber, int apartamentNumber)
+    {
         this->city = city;
-    };
-
-    void setStreet(std::string& street) {
         this->street = street;
-    };
-
-    void setHouseNumber(int houseNomber) {
-        this->houseNumber = houseNomber;
-    };
-
-    void setApartamentNumber(int apartamentNumber) {
+        this->houseNumber = houseNumber;
         this->apartamentNumber = apartamentNumber;
-    };
-
-    std::string getCity() {
-        return city;
     }
 
-    std::string getStreet() {
-        return street;
-    }
+    Address() {}
 
-    int getHouseNumber() {
-        return houseNumber;
-    }
+    std::string outputFile()
+    {
+        return this->city + ", " + this->street + ", " + std::to_string(this->houseNumber) + ", " + std::to_string(this->apartamentNumber);
 
-    int getApartamentNumber() {
-        return apartamentNumber;
     }
 
 };
@@ -70,6 +54,10 @@ int main(){
     //создание динмаического массива
     Address* arrayOFAddress = createArrayOFAddress(sizeArr);
 
+    //временные переменные для хранения полей адреса
+    std::string city, street;
+    int houseNumber, apartamentNumber;
+
     //считывание из файла массива
     fin.open(path_in);
 
@@ -78,14 +66,13 @@ int main(){
         fin >> str;
 
         for (int i = 0; i < sizeArr; i++) {
-            fin >> str;
-            arrayOFAddress[i].setCity(str);
-            fin >> str;
-            arrayOFAddress[i].setStreet(str);
-            fin >> str;
-            arrayOFAddress[i].setHouseNumber(std::stoi(str));
-            fin >> str;
-            arrayOFAddress[i].setApartamentNumber(std::stoi(str));
+            fin >> city;
+            fin >> street;
+            fin >> houseNumber;
+            fin >> apartamentNumber;
+
+            Address address(city, street, houseNumber, apartamentNumber);
+            arrayOFAddress[i] = address;
         }
 
         fin.close();
@@ -100,8 +87,8 @@ int main(){
 
         fout << sizeArr << std::endl;
         for (int i = sizeArr - 1; i >= 0; i--) {
-            fout << arrayOFAddress[i].getCity() << ", " << arrayOFAddress[i].getStreet() << ", "
-                << arrayOFAddress[i].getHouseNumber() << ", " << arrayOFAddress[i].getApartamentNumber() << std::endl;
+
+            fout << arrayOFAddress[i].outputFile() << std::endl;
         }
         fout.close();
     }
