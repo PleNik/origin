@@ -2,18 +2,18 @@
 #include<Windows.h>
 
 enum class Months {
-    Январь = 1,
-    Февраль,
-    Март,
-    Апрель,
-    Май,
-    Июнь,
-    Июль,
-    Август,
-    Сентябрь,
-    Октябрь,
-    Ноябрь,
-    Декабрь
+    January = 1,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December
 };
 
 int main() {
@@ -24,65 +24,70 @@ int main() {
     int userInput;
     std::cin >> userInput;
 
+    
+
     while (userInput) {
-        switch (userInput)
+
+        Months month = static_cast<Months>(userInput);
+
+        switch (month)
         {
-        case static_cast<int>(Months::Январь):
+        case Months::January:
 
             std::cout << "Январь" << std::endl;
             break;
 
-        case static_cast<int>(Months::Февраль):
+        case Months::February:
 
             std::cout << "Февраль" << std::endl;
             break;
 
-        case static_cast<int>(Months::Март):
+        case Months::March:
 
             std::cout << "Март" << std::endl;
             break;
 
-        case static_cast<int>(Months::Апрель):
+        case Months::April:
 
             std::cout << "Апрель" << std::endl;
             break;
 
-        case static_cast<int>(Months::Май):
+        case Months::May:
 
             std::cout << "Май" << std::endl;
             break;
 
-        case static_cast<int>(Months::Июнь):
+        case Months::June:
 
             std::cout << "Июнь" << std::endl;
             break;
 
-        case static_cast<int>(Months::Июль):
+        case Months::July:
 
             std::cout << "Июль" << std::endl;
             break;
 
-        case static_cast<int>(Months::Август):
+        case Months::August:
 
             std::cout << "Август" << std::endl;
             break;
 
-        case static_cast<int>(Months::Сентябрь):
+        case Months::September:
 
             std::cout << "Сентябрь" << std::endl;
             break;
 
-        case static_cast<int>(Months::Октябрь):
+        case Months::October:
 
             std::cout << "Октябрь" << std::endl;
             break;
 
-        case static_cast<int>(Months::Ноябрь):
+        case Months::November:
 
             std::cout << "Ноябрь" << std::endl;
             break;
 
-        case static_cast<int>(Months::Декабрь):
+        case Months::December:
 
             std::cout << "Декабрь" << std::endl;
             break;
