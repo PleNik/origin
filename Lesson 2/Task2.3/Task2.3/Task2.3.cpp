@@ -20,7 +20,7 @@ struct Address
     int index = 0;
 };
 
-void printAddress(Address& address)
+void printAddress(const Address& address)
 {
     std::cout << "Город: " << address.city << std::endl;
     std::cout << "Улица: " << address.street << std::endl;
