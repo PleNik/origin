@@ -9,6 +9,22 @@ class Address {
     int apartamentNumber = 0;
 
 public:
+    Address(std::string& city, std::string& street, int houseNumber, int apartamentNumber)
+    {
+        this->city = city;
+        this->street = street;
+        this->houseNumber = houseNumber;
+        this->apartamentNumber = apartamentNumber;
+    }
+
+    Address() {}
+
+    std::string outputFile()
+    {
+        return this->city + ", " + this->street + ", " + std::to_string(this->houseNumber) + ", " + std::to_string(this->apartamentNumber);
+
+    }
+
     void setCity(std::string& city) {
         this->city = city;
     };
@@ -41,24 +57,12 @@ public:
         return apartamentNumber;
     }
 
-    void swapAddress(Address& address) {
-        this->city.swap(address.city);
-        this->street.swap(address.street);
-
-        int tmp = this->houseNumber;
-        this->houseNumber = address.houseNumber;
-        address.houseNumber = tmp;
-
-        tmp = this->apartamentNumber;
-        this->apartamentNumber = address.apartamentNumber;
-        address.apartamentNumber = tmp;        
-    }
 
 };
 
 Address* createArrayOFAddress(int size); //функция создания динамического массива
 void deleteArray(Address* arr); //функция очистки выделеной под массивы памяти
-
+void sort(Address* arr, int size); //функциия сортировки массива
 
 int main(){
     int sizeArr = 0;
@@ -83,6 +87,10 @@ int main(){
     //создание динмаического массива
     Address* arrayOFAddress = createArrayOFAddress(sizeArr);
 
+    //временные переменные для хранения полей адреса
+    std::string city, street;
+    int houseNumber, apartamentNumber;
+
     //считывание из файла массива
     fin.open(path_in);
 
@@ -91,14 +99,13 @@ int main(){
         fin >> str;
 
         for (int i = 0; i < sizeArr; i++) {
-            fin >> str;
-            arrayOFAddress[i].setCity(str);
-            fin >> str;
-            arrayOFAddress[i].setStreet(str);
-            fin >> str;
-            arrayOFAddress[i].setHouseNumber(std::stoi(str));
-            fin >> str;
-            arrayOFAddress[i].setApartamentNumber(std::stoi(str));
+            fin >> city;
+            fin >> street;
+            fin >> houseNumber;
+            fin >> apartamentNumber;
+
+            Address address(city, street, houseNumber, apartamentNumber);
+            arrayOFAddress[i] = address;
         }
 
         fin.close();
@@ -107,14 +114,7 @@ int main(){
         std::cout << "Error opening file!" << std::endl;
 
     //сортировка массива
-    for (int i = 0; i < sizeArr; i++){
-        
-        for (int j = 1; j < sizeArr - i; j++) {
-
-            if (arrayOFAddress[j - 1].getCity() > arrayOFAddress[j].getCity())
-                arrayOFAddress[j].swapAddress(arrayOFAddress[j - 1]);
-        }
-    }
+    sort(arrayOFAddress, sizeArr);
 
     //запись в файл
     std::ofstream fout(path_out);
@@ -123,10 +123,8 @@ int main(){
         fout << sizeArr << std::endl;
 
         for (int i = 0; i < sizeArr; i++) {
-            fout << arrayOFAddress[i].getCity() << ", "
-                << arrayOFAddress[i].getStreet() << ", "
-                << arrayOFAddress[i].getHouseNumber() << ", "
-                << arrayOFAddress[i].getApartamentNumber() << std::endl;
+
+            fout << arrayOFAddress[i].outputFile() << std::endl;
         }
         fout.close();
     }
@@ -147,4 +145,38 @@ Address* createArrayOFAddress(int size) {
 
 void deleteArray(Address* arr) {
     delete[] arr;
+}
+
+void sort(Address* arr, int size)
+{
+    for (int i = 0; i < size; i++) {
+
+        for (int j = 1; j < size - i; j++) {
+
+            if (arr[j - 1].getCity() > arr[j].getCity())
+            {
+                std::string tempCityStreet1 = arr[j].getCity();
+                std::string tempCityStreet2 = arr[j - 1].getCity();
+                arr[j].setCity(tempCityStreet2);
+                arr[j - 1].setCity(tempCityStreet1);
+
+                tempCityStreet1 = arr[j].getStreet();
+                tempCityStreet2 = arr[j - 1].getStreet();
+                arr[j].setStreet(tempCityStreet2);
+                arr[j - 1].setStreet(tempCityStreet1);
+
+                int tempHouseAppartNumber1 = arr[j].getHouseNumber();
+                int tempHouseAppartNumber2 = arr[j - 1].getHouseNumber();
+                arr[j].setHouseNumber(tempHouseAppartNumber2);
+                arr[j - 1].setHouseNumber(tempHouseAppartNumber1);
+
+                tempHouseAppartNumber1 = arr[j].getApartamentNumber();
+                tempHouseAppartNumber2 = arr[j - 1].getApartamentNumber();
+                arr[j].setApartamentNumber(tempHouseAppartNumber2);
+                arr[j - 1].setApartamentNumber(tempHouseAppartNumber1);
+
+            }
+
+        }
+    }
 }
