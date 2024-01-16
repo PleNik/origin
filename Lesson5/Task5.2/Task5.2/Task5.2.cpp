@@ -5,6 +5,9 @@ class Figure {
 
 protected:
 	std::string name;
+
+public:
+	void virtual print_info() {}
 };
 
 //треугольник
@@ -54,6 +57,13 @@ public:
 	std::string getName() {
 		return name;
 	}
+
+	void print_info() override {
+		std::cout << this->getName() << ":\n";
+		std::cout << "Стороны: a=" << this->getSide_a() << " b=" << this->getSide_b() << " c=" << this->getSide_c() << std::endl;
+		std::cout << "Углы: А=" << this->getAngle_A() << " B=" << this->getAngle_B() << " C=" << this->getAngle_C() << std::endl;
+		std::cout << std::endl;
+	}
 };
 
 //прямоугольный треугольник
@@ -61,6 +71,10 @@ class RightTriangle : public Triangle {
 public:
 	RightTriangle(double a, double b, double c, double A, double B) :Triangle(a, b, c, A, B, 90) {
 		name = "Прямоугольный треугольник";
+	}
+
+	void print_info() override {
+		Triangle::print_info();
 	}
 };
 
@@ -70,6 +84,10 @@ public:
 	IsoscelesTriangle(double a, double b, double A, double B) :Triangle(a, b, a, A, B, A) {
 		name = "Равнобедренный треугольник";
 	}
+
+	void print_info() override {
+		Triangle::print_info();
+	}
 };
 
 //равносторонний треугольник
@@ -77,6 +95,10 @@ class EquilateralTriangle : public Triangle {
 public:
 	EquilateralTriangle(double a) : Triangle(a, a, a, 60, 60, 60) {
 		name = "Равносторонний треугольник";
+	}
+
+	void print_info() override {
+		Triangle::print_info();
 	}
 };
 
@@ -139,6 +161,13 @@ public:
 	std::string getName() {
 		return name;
 	}
+
+	void print_info() override {
+		std::cout << this->getName() << ":\n";
+		std::cout << "Стороны: a=" << this->getSide_a() << " b=" << this->getSide_b() << " c=" << this->getSide_c() << " d=" << this->getSide_d() << std::endl;
+		std::cout << "Углы: А=" << this->getAngle_A() << " B=" << this->getAngle_B() << " C=" << this->getAngle_C() << " D=" << this->getAngle_D() << std::endl;
+		std::cout << std::endl;
+	}
 };
 
 //прямоугольник
@@ -148,6 +177,10 @@ public:
 
 		name = "Прямоугольник";
 	}
+
+	void print_info() override {
+		Quadrilateral::print_info();
+	}
 };
 
 //квадрат
@@ -155,6 +188,10 @@ class Square : public Rectangle {
 public:
 	Square(double a) : Rectangle(a, a) {
 		name = "Квадрат";
+	}
+
+	void print_info() override {
+		Quadrilateral::print_info();
 	}
 };
 
@@ -164,6 +201,10 @@ public:
 	Parallelogram(double a, double b, double A, double B) :Quadrilateral(a, b, a, b, A, B, A, B) {
 		name = "Параллелограмм";
 	}
+
+	void print_info() override {
+		Quadrilateral::print_info();
+	}
 };
 
 //ромб
@@ -172,61 +213,47 @@ public:
 	Rhombus(double a, double A, double B) :Parallelogram(a, a, A, B) {
 		name = "Ромб";
 	}
+
+	void print_info() override {
+		Quadrilateral::print_info();
+	}
 };
 
-void print_infoTriangle(Triangle* figure);
-
-
-void print_infoQuadr(Quadrilateral* figure);
-	
+void print_info(Figure* figure) {
+	figure->print_info();
+}
 
 int main()
 {
 	setlocale(LC_ALL, "ru");
 
 	Triangle triangle(10, 20, 30, 50, 60, 70);
-	print_infoTriangle(&triangle);
+	print_info(&triangle);
 
 	RightTriangle rTriangle(10, 20, 30, 50, 60);
-	print_infoTriangle(&rTriangle);
+	print_info(&rTriangle);
 
 	IsoscelesTriangle isTriangle(10, 20, 50, 60);
-	print_infoTriangle(&isTriangle);
+	print_info(&isTriangle);
 
 	EquilateralTriangle eqTriangle(30);
-	print_infoTriangle(&eqTriangle);
+	print_info(&eqTriangle);
 
 	Quadrilateral quart(10, 20, 30, 40, 50, 60, 70, 80);
-	print_infoQuadr(&quart);
+	print_info(&quart);
 
 	Rectangle rectangle(10, 20);
-	print_infoQuadr(&rectangle);
+	print_info(&rectangle);
 
 	Square square(20);
-	print_infoQuadr(&square);
+	print_info(&square);
 
 	Parallelogram paralgrm(20, 30, 30, 40);
-	print_infoQuadr(&paralgrm);
+	print_info(&paralgrm);
 
 	Rhombus rhombus(30, 30, 40);
-	print_infoQuadr(&rhombus);
+	print_info(&rhombus);
 
 	
     return 0;
-}
-
-void print_infoTriangle(Triangle* figure)
-{
-	std::cout << figure->getName() << ":\n";
-	std::cout << "Стороны: a=" << figure->getSide_a() << " b=" << figure->getSide_b() << " c=" << figure->getSide_c() << std::endl;
-	std::cout << "Углы: А=" << figure->getAngle_A() << " B=" << figure->getAngle_B() << " C=" << figure->getAngle_C() << std::endl;
-	std::cout << std::endl;
-}
-
-void print_infoQuadr(Quadrilateral* figure)
-{
-	std::cout << figure->getName() << ":\n";
-	std::cout << "Стороны: a=" << figure->getSide_a() << " b=" << figure->getSide_b() << " c=" << figure->getSide_c() << " d="<<figure->getSide_d()<<std::endl;
-	std::cout << "Углы: А=" << figure->getAngle_A() << " B=" << figure->getAngle_B() << " C=" << figure->getAngle_C() <<" D="<<figure->getAngle_D()<< std::endl;
-	std::cout << std::endl;
 }
