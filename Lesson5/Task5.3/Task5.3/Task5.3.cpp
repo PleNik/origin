@@ -72,7 +72,7 @@ public:
 	}
 
 	bool check() override {
-		return C == 90 && (A+B+C)==180;
+		return Triangle::check() && C == 90;
 	}
 };
 
@@ -88,7 +88,7 @@ public:
 	}
 
 	bool check() override {
-		return a == c && A == C && (A+B+C)==180;
+		return Triangle::check() && a == c && A == C;
 	}
 };
 
@@ -101,6 +101,10 @@ public:
 
 	void print_info() override {
 		Triangle::print_info();
+	}
+
+	bool check() override {
+		return Triangle::check();
 	}
 
 };
@@ -158,7 +162,7 @@ public:
 	}
 
 	bool check() override {
-		return a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90;
+		return Quadrilateral::check() && a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90;
 	}
 };
 
@@ -171,6 +175,10 @@ public:
 
 	void print_info() override {
 		Quadrilateral::print_info();
+	}
+
+	bool check() override {
+		return Quadrilateral::check();
 	}
 
 };
@@ -187,7 +195,7 @@ public:
 	}
 
 	bool check() override {
-		return a == c && b == d && A == C && B == D && (A+B+C+D)==360;
+		return  Quadrilateral::check() && a == c && b == d && A == C && B == D;
 	}
 };
 
@@ -203,8 +211,8 @@ public:
 	}
 
 	bool check() override {
-		return a == b && a == c && a == d && b == c && b == d && d == c
-			&& A == C && B == D && (A+B+C+D)==360;
+		return  Quadrilateral::check() && a == b && a == c && a == d && b == c && b == d && d == c
+			&& A == C && B == D;
 	}
 };
 
