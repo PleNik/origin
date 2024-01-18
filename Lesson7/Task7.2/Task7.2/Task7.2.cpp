@@ -8,14 +8,9 @@ int main() {
     int b = 5;
     int c = 2;
 
-    int differ = SUB(a, b);
-    std::cout << differ << std::endl;
-
-    std::cout << differ * c << std::endl;
-
-    int sum = b + c;
-    differ = SUB(a, sum);
-    std::cout << differ * c << std::endl;
+    std::cout << SUB(a, b) << std::endl;
+    std::cout << SUB(a, b) * c << std::endl;
+    std::cout << SUB(a, b + c) * c << std::endl;
 
     return 0;
 }
