@@ -2,9 +2,13 @@
 
 #define MODE 1
 
+#ifdef MODE==1
+
 int add(int x, int y) {
 	return x + y;
 }
+
+#endif // MODE==1
 
 int main()
 {
