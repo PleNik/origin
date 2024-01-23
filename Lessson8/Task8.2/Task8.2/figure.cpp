@@ -7,6 +7,4 @@ Figure::Figure() {
 
 void Figure::print_info() {}
 
-void Figure::check() {}
-
 

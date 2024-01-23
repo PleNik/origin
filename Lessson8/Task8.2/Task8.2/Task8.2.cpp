@@ -18,32 +18,80 @@ int main()
 {
 	setlocale(LC_ALL, "ru");
 
-	Triangle triangle(10, 20, 30, 50, 70, 70);
-	print_info(&triangle);
 
-	RightTriangle rTriangle(10, 20, 30, 50, 40);
-	print_info(&rTriangle);
+	try	{
+		Triangle triangle(10, 20, 30, 70, 30, 60);
+		print_info(&triangle);
+	}
+	catch (const FigureException& ex)	{
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
 
-	IsoscelesTriangle isTriangle(10, 20, 40, 80);
-	print_info(&isTriangle);
+	try	{
+		RightTriangle rTriangle(10, 20, 30, 50, 40);
+		print_info(&rTriangle);
+	}
+	catch (const FigureException& ex)	{
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
 
-	EquilateralTriangle eqTriangle(30);
-	print_info(&eqTriangle);
+	try	{
+		IsoscelesTriangle isTriangle(10, 20, 40, 80);
+		print_info(&isTriangle);
+	}
+	catch (const FigureException& ex)	{
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
 
-	Quadrilateral quart(10, 20, 30, 40, 110, 80, 70, 110);
-	print_info(&quart);
+	try	{
+		EquilateralTriangle eqTriangle(30);
+		print_info(&eqTriangle);
+	}
+	catch (const FigureException& ex)	{
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
 
-	Rectangle rectangle(10, 20);
-	print_info(&rectangle);
+	try	{
+		Quadrilateral quart(10, 20, 30, 40, 110, 80, 70, 110);
+		print_info(&quart);
+	}
+	catch (const FigureException& ex)	{
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
 
-	Square square(20);
-	print_info(&square);
+	try	{
+		Rectangle rectangle(10, 20);
+		print_info(&rectangle);
+	}
+	catch (const FigureException& ex)	{
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
 
-	Parallelogram paralgrm(20, 30, 50, 140);
-	print_info(&paralgrm);
+	try	{
+		Square square(20);
+		print_info(&square);
+	}
+	catch (const FigureException& ex)	{
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
 
-	Rhombus rhombus(30, 40, 140);
-	print_info(&rhombus);
+	try	{
+		Parallelogram paralgrm(20, 30, 50, 140);
+		print_info(&paralgrm);
+	}
+	catch (const FigureException& ex) {
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
+
+	try	{
+		Rhombus rhombus(30, 40, 140);
+		print_info(&rhombus);
+	}
+	catch (const FigureException& ex) {
+		std::cout << "Ошибка создания фигуры. Причина: " << ex.what() << std::endl;
+	}
+
+	
 	
 	return 0;
 }

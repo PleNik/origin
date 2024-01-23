@@ -3,16 +3,6 @@
 Rectangle::Rectangle(double a, double b) : Quadrilateral(a, b, a, b, 90, 90, 90, 90) {
 
 	name = "Прямоугольник";
-}
-
-void Rectangle::print_info() {
-
-	Quadrilateral::print_info();
-}
-
-void Rectangle::check() {
-
-	Quadrilateral::check();
 
 	if (a != c && b != d)
 		throw FigureException("стороны a, c  и b, d попарно не равны");
@@ -21,3 +11,7 @@ void Rectangle::check() {
 		throw FigureException("все углы не равны 90");
 }
 
+void Rectangle::print_info() {
+
+	Quadrilateral::print_info();
+}

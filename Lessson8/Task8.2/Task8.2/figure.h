@@ -9,7 +9,6 @@ protected:
 	std::string name;
 	int numberOfSides{};
 	int numberOfAngles{};
-	virtual void check();
 
 public:
 	Figure();

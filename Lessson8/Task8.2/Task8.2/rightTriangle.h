@@ -4,9 +4,6 @@
 
 class RightTriangle : public Triangle {
 
-protected:
-	void check() override;
-
 public:
 	RightTriangle(double, double, double, double, double);
 
