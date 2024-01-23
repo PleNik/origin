@@ -2,6 +2,13 @@
 #include<string>
 #include<Windows.h>
 
+class FobiddenLengthException : public std::exception {
+public:
+    const char* what() const override {
+        return "Вы ввели слово запретной длины! До свидания";
+    }
+};
+
 int function(std::string str, int fobidden_length);
 
 int main() {
@@ -25,8 +32,8 @@ int main() {
 
             std::cout << "Длина слова " << str << " равна " << function(str, fobidden_length) << std::endl;
         }
-        catch (const char* bad_length) {
-            std::cout << bad_length << std::endl;
+        catch (FobiddenLengthException& ex) {
+            std::cout << ex.what() << std::endl;
             break;
         }
 
@@ -35,12 +42,11 @@ int main() {
     return 0;
 }
 
-int function(std::string str, int fobidden_length)
-{
-    if (str.length() != fobidden_length) {
+int function(std::string str, int fobidden_length) {
+    if (str.length() == fobidden_length) {
 
-        return str.length();
+        throw FobiddenLengthException();
     }
-    
-    throw "Вы ввели слово запретной длины! До свидания";
+
+    return str.length();
 }
