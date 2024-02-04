@@ -1,0 +1,5 @@
+C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.5/FiguresLibraryDynamic/build/CMakeFiles/Figures_project.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.5/FiguresLibraryDynamic/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.5/FiguresLibraryDynamic/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.5/FiguresLibraryDynamic/build/figures_library_dynamic/CMakeFiles/figur_lib.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.5/FiguresLibraryDynamic/build/figures_library_dynamic/CMakeFiles/ALL_BUILD.dir

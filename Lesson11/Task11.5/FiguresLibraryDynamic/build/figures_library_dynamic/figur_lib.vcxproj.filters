@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\equilateralTriangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\figure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\isoscelesTriangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\parallelogram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\quadrilateral.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\rectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\rhombus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\rightTriangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\square.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\equilateralTriangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\figure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\isoscelesTriangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\parallelogram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\quadrilateral.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\rhombus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\rightTriangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\square.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\figures_library_dynamic\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{17B3BF13-2DC5-390E-9A88-49B23A3F5421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1A4D0880-CA33-330A-8650-40B88F49200D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

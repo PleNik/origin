@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\FiguresClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\User\Documents\C++\Homworks\Lesson11\Task11.5\FiguresLibraryDynamic\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1A4D0880-CA33-330A-8650-40B88F49200D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
