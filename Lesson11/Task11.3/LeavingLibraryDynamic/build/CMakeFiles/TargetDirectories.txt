@@ -1,5 +1,0 @@
-C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.3/LeavingLibraryDynamic/build/CMakeFiles/Leaving_project.dir
-C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.3/LeavingLibraryDynamic/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.3/LeavingLibraryDynamic/build/CMakeFiles/ZERO_CHECK.dir
-C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.3/LeavingLibraryDynamic/build/leaving_library_dynamic/CMakeFiles/leav_lib.dir
-C:/Users/User/Documents/C++/Homworks/Lesson11/Task11.3/LeavingLibraryDynamic/build/leaving_library_dynamic/CMakeFiles/ALL_BUILD.dir
