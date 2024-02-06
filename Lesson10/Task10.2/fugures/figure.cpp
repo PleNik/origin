@@ -1,8 +1,8 @@
-#include "figure.h"
+п»ї#include "figure.h"
 
 Figure::Figure() {
 
-	name = "Фигура";
+	name = "Г”ГЁГЈГіГ°Г ";
 }
 
 void Figure::print_info() {}
