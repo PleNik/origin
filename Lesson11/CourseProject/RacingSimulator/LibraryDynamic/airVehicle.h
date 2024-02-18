@@ -1,0 +1,17 @@
+#pragma once
+
+#include"vehicle.h"
+
+namespace VehiclesDynamic {
+
+	class AirVehicle : public Vehicle {
+
+	protected:
+		int distanceReductionFactor; //коэффициент сокращения расстояния
+
+	public:
+		VEHICLESLIBRARY_API AirVehicle();
+	};
+
+}
+
