@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="exceptions.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="RacingProjectClient.cpp" />
   </ItemGroup>
@@ -149,7 +148,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="exceptions.h" />
     <ClInclude Include="functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

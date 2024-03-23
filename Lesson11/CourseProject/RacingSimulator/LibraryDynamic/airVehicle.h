@@ -11,6 +11,11 @@ namespace VehiclesDynamic {
 
 	public:
 		VEHICLESLIBRARY_API AirVehicle();
+
+		VEHICLESLIBRARY_API TransportType getType() const override;
+
+		VEHICLESLIBRARY_API double CalcTimeRide(double distance) const override;
+
 	};
 
 }

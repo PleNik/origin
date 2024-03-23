@@ -9,6 +9,10 @@ namespace VehiclesDynamic {
         VEHICLESLIBRARY_API CamelWalker();
  
         VEHICLESLIBRARY_API static int counterOfCamelWalker;
+
+        VEHICLESLIBRARY_API TransportType getType() const override;
+
+        VEHICLESLIBRARY_API double CalcTimeRide(double distance) const override;
     };
 }
 

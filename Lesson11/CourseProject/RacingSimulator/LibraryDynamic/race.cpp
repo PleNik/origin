@@ -1,5 +1,6 @@
 #include "race.h"
 
+
 VEHICLESLIBRARY_API void VehiclesDynamic::Race::SetDistance(double distance) {
 
 	this->distance = distance;
@@ -15,4 +16,12 @@ VEHICLESLIBRARY_API double VehiclesDynamic::Race::GetDistance()
 	return this->distance;
 }
 
-double VehiclesDynamic::Race::distance = 0;  //инициализация статической переменной вне класса
+VEHICLESLIBRARY_API double VehiclesDynamic::Race::CalcTimeRide(Vehicle* vehicle) const {
+
+	return vehicle->CalcTimeRide(distance);
+}
+
+VEHICLESLIBRARY_API bool VehiclesDynamic::Race::AddVehicle(Vehicle* vehicle)
+{
+	return false;
+}

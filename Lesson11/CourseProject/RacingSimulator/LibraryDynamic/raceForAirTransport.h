@@ -8,7 +8,8 @@ namespace VehiclesDynamic {
 
 	public:
 		VEHICLESLIBRARY_API RaceForAirTranspot();
-		VEHICLESLIBRARY_API bool AddVehicle(Vehicle& vehicle) override;
+		VEHICLESLIBRARY_API bool AddVehicle(Vehicle* vehicle) override;
+		VEHICLESLIBRARY_API double CalcTimeRide(Vehicle* vehicle)const;
 
 	};
 

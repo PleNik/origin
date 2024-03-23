@@ -6,7 +6,12 @@ VehiclesDynamic::AllTerrainBoots::AllTerrainBoots() {
     drivingTimeBeforeRest = 60;
     counterOfAllTerrainBoots++;
     nameOfVehicle = "Ботинки-вездеходы";
-    timeOfRace = distance / speed;
+    
+}
+
+VEHICLESLIBRARY_API double VehiclesDynamic::AllTerrainBoots::CalcTimeRide(double distance) const {
+    double durationOfRest;
+    double timeOfRace = distance / speed;
 
     if ((distance / speed) > drivingTimeBeforeRest)
     {
@@ -19,6 +24,8 @@ VehiclesDynamic::AllTerrainBoots::AllTerrainBoots() {
             timeOfRace += durationOfRest;
         }
     }
+
+    return  timeOfRace;;
 }
 
 int VehiclesDynamic::AllTerrainBoots::counterOfAllTerrainBoots = 0; //инициализация статической переменной вне класса

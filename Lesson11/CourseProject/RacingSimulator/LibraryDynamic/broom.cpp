@@ -2,12 +2,19 @@
 
 VehiclesDynamic::Broom::Broom() {
 	speed = 20;
-	distanceReductionFactor = distance / 1000;
 	counterOfBroom++;
 	nameOfVehicle = "Метла";
 
-	timeOfRace = (distance - distance * distanceReductionFactor / 100) / speed;
 }
 
+VEHICLESLIBRARY_API VehiclesDynamic::TransportType VehiclesDynamic::Broom::getType() const {
+	return transportType;
+}
+
+VEHICLESLIBRARY_API double VehiclesDynamic::Broom::CalcTimeRide(double distance) const {
+	
+
+	return (distance - distance * distance / 10) / speed;
+}
 
 int VehiclesDynamic::Broom::counterOfBroom = 0; //инициализация статической переменной вне класса

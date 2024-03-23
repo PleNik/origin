@@ -7,9 +7,17 @@ VehiclesDynamic::Centaur::Centaur() {
     durationOfRest = 2;
     counterOfCentaur++;
     nameOfVehicle = "Кентавр";
-    timeOfRace = distance / speed;
+    
+}
 
-    if  ((distance / speed) > drivingTimeBeforeRest) {
+VEHICLESLIBRARY_API VehiclesDynamic::TransportType VehiclesDynamic::Centaur::getType() const {
+    return transportType;
+}
+
+VEHICLESLIBRARY_API double VehiclesDynamic::Centaur::CalcTimeRide(double distance) const {
+
+    double timeOfRace = distance / speed;
+    if ((distance / speed) > drivingTimeBeforeRest) {
 
         for (int i = 1; i < ((distance / speed) / drivingTimeBeforeRest); i++) {
 
@@ -17,7 +25,7 @@ VehiclesDynamic::Centaur::Centaur() {
         }
 
     }
-
+    return timeOfRace;
 }
 
 int VehiclesDynamic::Centaur::counterOfCentaur = 0;

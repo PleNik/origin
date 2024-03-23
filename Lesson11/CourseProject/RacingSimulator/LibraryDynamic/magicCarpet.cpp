@@ -3,6 +3,18 @@
 VehiclesDynamic::MagicCarpet::MagicCarpet() {
 	speed = 10;
 
+	counterOfMagicCarpet++;
+	nameOfVehicle = " овер-самолет";
+
+}
+
+VEHICLESLIBRARY_API VehiclesDynamic::TransportType VehiclesDynamic::MagicCarpet::getType() const {
+
+	return transportType;
+}
+
+VEHICLESLIBRARY_API double VehiclesDynamic::MagicCarpet::CalcTimeRide(double distance) const {
+	int distanceReductionFactor;
 	if (distance < 1000)
 		distanceReductionFactor = 0;
 	else if (distance >= 1000 && distance < 5000)
@@ -11,11 +23,7 @@ VehiclesDynamic::MagicCarpet::MagicCarpet() {
 		distanceReductionFactor = 10;
 	else
 		distanceReductionFactor = 5;
-
-	counterOfMagicCarpet++;
-	nameOfVehicle = " овер-самолет";
-
-	timeOfRace = (distance - distance * distanceReductionFactor / 100) / speed;
+	return (distance - distance * distanceReductionFactor / 100) / speed;
 }
 
 int VehiclesDynamic::MagicCarpet::counterOfMagicCarpet = 0; //инициализаци€ статической переменной вне класса

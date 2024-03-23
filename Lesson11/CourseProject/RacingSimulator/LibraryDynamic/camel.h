@@ -10,6 +10,10 @@ namespace VehiclesDynamic {
 
         static int  VEHICLESLIBRARY_API counterOfCamel;
 
+        VEHICLESLIBRARY_API TransportType getType() const override;
+
+        VEHICLESLIBRARY_API double CalcTimeRide(double distance) const override;
+
     };
 
     

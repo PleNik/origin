@@ -11,20 +11,27 @@
 
 namespace VehiclesDynamic {
 
+    enum class TransportType {
+        Ground,
+        Air
+    };
+
     class Vehicle {
 
     protected:
-        double speed; //скорость ТС
+        double speed;
         std::string nameOfVehicle;
-        double timeOfRace = 0;
+        //double timeOfRace = 0;
+        TransportType transportType;
+        double distance;
          
 
     public:
         VEHICLESLIBRARY_API std::string getNameOfVehicle();
-        VEHICLESLIBRARY_API double getTimeOfRace();
 
-        VEHICLESLIBRARY_API static double distance;
-        VEHICLESLIBRARY_API static int counterOfVehicle;
+        VEHICLESLIBRARY_API virtual TransportType getType() const;  //тип, чтобы выбирать в какой гонке будет участвовать
+
+        VEHICLESLIBRARY_API virtual double CalcTimeRide(double distance) const; //расчёт времени по дистанции, математическая модель из ТЗ
     };
 
 }

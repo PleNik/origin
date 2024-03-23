@@ -6,19 +6,26 @@ VehiclesDynamic::RaceForLandTransport::RaceForLandTransport() {
 }
 
 
-bool VehiclesDynamic::RaceForLandTransport::AddVehicle(Vehicle& vehicle) {
+bool VehiclesDynamic::RaceForLandTransport::AddVehicle(Vehicle* vehicle) {
 
 	bool VehicleIsNotGroundTransportation = false;
-	if (vehicle.getNameOfVehicle() == "Ковер-самолет" || vehicle.getNameOfVehicle() == "Орел" || vehicle.getNameOfVehicle() == "Метла") {
+	
+	if (vehicle->getType() != TransportType::Ground) {
 		
 		VehicleIsNotGroundTransportation = true;
 
 		return  VehicleIsNotGroundTransportation;
 	}
 
-	vehicle.counterOfVehicle ++;
 	vehicles.push_back(vehicle);
 
 	return VehicleIsNotGroundTransportation;
 }
+
+VEHICLESLIBRARY_API double VehiclesDynamic::RaceForLandTransport::CalcTimeRide(Vehicle* vehicle) const
+{
+	return Race::CalcTimeRide(vehicle);
+}
+
+
 

@@ -9,16 +9,18 @@
 #include "raceForLandTransport.h"
 #include "raceForAirTransport.h"
 #include "raceForLandAndAirTransport.h"
-#include "exceptions.h"
+#include"enumRace.h"
+#include"enumMenu.h"
+#include "enumOneMoreRaceOrExit.h"
 
 // меню выбора типа гонки
 VehiclesDynamic::RaceType menuRaceTypeSelection();
 
 // установка дистанции
-void setDisanceRace();
+void setDisanceRace(VehiclesDynamic::Race& raceType);
 
 // меню: регистрации ТС либо начала гонки
-VehiclesDynamic::Menu regVehicleOrStartRace();
+VehiclesDynamic::Menu regVehicleOrStartRace(VehiclesDynamic::Race& typeOfRace);
 
 //регистрация ТС
 void regVehicle(VehiclesDynamic::Race& typeOfRace);

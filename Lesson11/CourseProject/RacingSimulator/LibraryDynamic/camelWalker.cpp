@@ -4,25 +4,34 @@ VehiclesDynamic::CamelWalker::CamelWalker() {
 
 	speed = 40;
 	drivingTimeBeforeRest = 10;
-	distance = distance;
+	//distance;
     counterOfCamelWalker++;
     nameOfVehicle = "Верблюд-быстроход";
-    timeOfRace = distance / speed;
+   
+}
 
-    if ((distance / speed) > drivingTimeBeforeRest) {
+VEHICLESLIBRARY_API VehiclesDynamic::TransportType VehiclesDynamic::CamelWalker::getType() const {
 
-        for (int i = 1; i < (raceTimeWithoutRest /
-            drivingTimeBeforeRest); i++) {
+    return transportType;
+}
 
-            if (i == 1) durationOfRest = 5;
-            else if (i == 3) durationOfRest = 6.5;
-            else durationOfRest = 8;
+VEHICLESLIBRARY_API double VehiclesDynamic::CamelWalker::CalcTimeRide(double distance) const {
+   double timeOfRace = distance / speed;
+   double durationOfRest;
 
-            timeOfRace += durationOfRest;
-        }
+   if ((distance / speed) > drivingTimeBeforeRest) {
 
-    }
+       for (int i = 1; i < ((distance / speed) / drivingTimeBeforeRest); i++) {
 
+           if (i == 1) durationOfRest = 5;
+           else if (i == 3) durationOfRest = 6.5;
+           else durationOfRest = 8;
+
+           timeOfRace += durationOfRest;
+       }
+
+   }
+    return timeOfRace;
 }
 
 int VehiclesDynamic::CamelWalker::counterOfCamelWalker = 0;

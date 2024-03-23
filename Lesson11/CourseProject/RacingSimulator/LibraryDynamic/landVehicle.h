@@ -11,6 +11,9 @@ namespace VehiclesDynamic {
 
 	public:
 		VEHICLESLIBRARY_API LandVehicle();
+		VEHICLESLIBRARY_API TransportType getType() const override;//тип, чтобы выбирать в какой гонке будет участвовать
+		VEHICLESLIBRARY_API double CalcTimeRide(double distance) const override;
+
 	};
 
 }

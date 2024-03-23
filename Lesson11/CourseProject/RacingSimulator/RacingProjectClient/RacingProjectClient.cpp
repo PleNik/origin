@@ -1,12 +1,13 @@
 ﻿#include <iostream>
 #include<string>
-
-#include "exceptions.h"
 #include "functions.h"
+
 
 int main() {
 
 	setlocale(LC_ALL, "ru");
+
+	
 	
 	std::cout << "Добро пожаловать в гоночный симулятор!" << std::endl;
 	
@@ -40,6 +41,8 @@ int main() {
 		}
 
 	} while (MenuPlayOrExit() == VehiclesDynamic::OneMoreRaceOrExit::OneMoreRace); //до тех пор, пока не нажата клавиша Выхода
+	
+	
 	
 
 	return 0;

@@ -3,14 +3,14 @@
 
 VEHICLESLIBRARY_API std::string VehiclesDynamic::Vehicle::getNameOfVehicle()
 {
-    return this->nameOfVehicle;
+    return nameOfVehicle;
 }
 
-VEHICLESLIBRARY_API double VehiclesDynamic::Vehicle::getTimeOfRace()
+VEHICLESLIBRARY_API VehiclesDynamic::TransportType VehiclesDynamic::Vehicle::getType() const
 {
-    return timeOfRace;
+    return transportType;
 }
 
-//инициализация статических переменных вне класса
-double VehiclesDynamic::Vehicle::distance = 0;  
-int VehiclesDynamic::Vehicle::counterOfVehicle = 0;
+VEHICLESLIBRARY_API double VehiclesDynamic::Vehicle::CalcTimeRide(double distance) const {
+   return 0.0;
+}
