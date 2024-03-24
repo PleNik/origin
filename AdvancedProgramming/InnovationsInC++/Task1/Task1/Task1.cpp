@@ -2,16 +2,20 @@
 #include<vector>
 #include<algorithm>
 
+
+
 int main() {
 
 	setlocale(LC_ALL, "ru");
 
 	std::vector<int> v {4,7,9,14,12};
 
+
+
 	auto func = [&v](int value) {
-		for (int i = 0; i < v.size(); i++) {
-			if (v[i] % 2)
-				v[i] *= value;
+		for (auto i = v.begin(); i != v.end(); i++) {
+			if (*i % 2)
+				*i *= value;
 		}
 	};
 	std::cout << "Входные данные: ";
