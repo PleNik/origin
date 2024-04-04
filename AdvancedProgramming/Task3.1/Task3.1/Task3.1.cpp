@@ -8,10 +8,16 @@ public:
     }
 };
 
+class IndexIncorrectException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Индекс выходит за пределы массива";
+    }
+};
+
 class smart_array {
 public:
     smart_array(int size) : size(size), data(new int[size]) {
-
         index = 0;
     }
 
@@ -23,16 +29,14 @@ public:
         index++;
     }
 
-    int get_element(int index) {
+    int get_element(unsigned index) {
 
-        if (index < 0 || index >= size) {
-            std::cout << "Введен некорректный индекс" << std::endl;
-            return -1;
+        if (index >= size) {
+            throw IndexIncorrectException();
         }
         else {
             return data[index];
         }
-
     }
 
     ~smart_array() {
@@ -42,9 +46,8 @@ public:
 private:
     int size;
     int* data;
-    int index;
+    unsigned index;
 };
-
 
 int main() {
     setlocale(LC_ALL, "ru");
@@ -55,14 +58,14 @@ int main() {
         arr.add_element(155);
         arr.add_element(15);
         arr.add_element(66);
-        // arr.add_element(12);
+        //arr.add_element(12); //вызывает исключение
 
+        //std::cout << arr.get_element(7) << std::endl; //вызывает исключение
         std::cout << arr.get_element(4) << std::endl;
     }
     catch (const std::exception& ex) {
         std::cout << ex.what() << std::endl;
     }
-
 
     return 0;
 }
