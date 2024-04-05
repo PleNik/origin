@@ -16,6 +16,10 @@ public:
         if (next != nullptr) next->prev = this;
     }
 
+    int GetElement() {
+        return value;
+    }
+
 public:
     int value;
     ListNode* prev;
@@ -39,24 +43,27 @@ public:
         delete m_tail;
     }
 
-    //проверяемая функция
+    
     bool Empty() { return m_size == 0; }
 
-    //проверяемая функция
     unsigned long Size() { return m_size; }
 
+    //проверяемая функция
     void PushFront(int value)
     {
         new ListNode(value, m_head, m_head->next);
         ++m_size;
     }
 
+    //проверяемая функция
     void PushBack(int value)
     {
         new ListNode(value, m_tail->prev, m_tail);
         ++m_size;
     }
+    
 
+    //проверяемая функция
     int PopFront()
     {
         if (Empty()) throw std::runtime_error("list is empty");
@@ -66,6 +73,7 @@ public:
         return ret;
     }
 
+    //проверяемая функция
     int PopBack()
     {
         if (Empty()) throw std::runtime_error("list is empty");
@@ -75,7 +83,7 @@ public:
         return ret;
     }
 
-    //проверяемая функция
+   
     void Clear()
     {
         auto current = m_head->next;
@@ -104,35 +112,60 @@ private:
 
 
 //юнит-тесты
-TEST_CASE("Is List Empty") {
+TEST_CASE("PushBack") {
     List list;
-    SECTION("List is empty") {
-        CHECK(list.Empty() == true);
+    SECTION("is element added") {
+        list.PushBack(2);
+        REQUIRE(list.Empty() == false);
     }
-    SECTION("List is not empty") {
-        list.PushBack(34);
-        CHECK(!list.Empty());
+
+    SECTION("is element added to the back") {
+        list.PushBack(2);
+        list.PushBack(14);
+       
+        REQUIRE(list.PopBack() == 14);
     }
+    
+}
+ 
+TEST_CASE("PushFront") {
+    List list;
+    SECTION("is element added") {
+        list.PushBack(2);
+        REQUIRE(list.Empty() == false);
+    }
+    SECTION("is element added to the front") {
+        list.PushBack(2);
+        list.PushBack(14);
+
+        REQUIRE(list.PopFront() == 2);
+    }
+
 }
 
-TEST_CASE("Check Size") {
+TEST_CASE("PopBack") {
     List list;
-    SECTION("List is empty") {
-        CHECK(!list.Size());
+    SECTION("removing from the end") {
+        list.PushBack(2);
+        list.PushBack(14);
+        list.PopBack();
+        REQUIRE(list.PopBack() != 14);
     }
-    SECTION("List is not empty") {
-        list.PushBack(3);
-        list.PushBack(45);
-        list.PushBack(12);
-        CHECK(list.Size() == 3);
+    SECTION("removing from empty list") {
+        REQUIRE_THROWS_AS(list.PopBack(), std::runtime_error);
     }
+
 }
 
-TEST_CASE("Clear List") {
+TEST_CASE("PopFront") {
     List list;
-    list.PushBack(3);
-    list.PushBack(45);
-    list.PushBack(12);
-    list.Clear();
-    CHECK(list.Size() == 0);
+    SECTION("removing from the front") {
+        list.PushBack(2);
+        list.PushBack(14);
+        list.PopFront();
+        REQUIRE(list.PopBack() != 2);
+    }
+    SECTION("removing from empty list") {
+        REQUIRE_THROWS_AS(list.PopFront(), std::runtime_error);
+    }
 }
