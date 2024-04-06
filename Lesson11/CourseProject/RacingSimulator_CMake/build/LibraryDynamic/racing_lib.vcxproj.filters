@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\AirRace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\AirTransport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\AllTerrainBoots.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Broom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Camel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\CamelFast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\CarpetPlane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Centaur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Eagle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\GroundTransport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\ITransport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\LandAndAirRace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\LandRace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Race.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\AirRace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\AirTransport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\AllTerrainBoots.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Broom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Camel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\CamelFast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\CarpetPlane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Centaur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Eagle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\GroundTransport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\ITransport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\LandAndAirRace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\LandRace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\Race.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8166F6E8-8A2A-3BF3-AD83-38FA251E27B8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{02780EF6-26D8-3D66-9E0B-A492717C3651}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

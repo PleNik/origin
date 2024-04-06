@@ -1,5 +1,5 @@
-C:/Users/User/Documents/C++/RacingSimulator_CMake/build/CMakeFiles/RasingSimulator_project.dir
-C:/Users/User/Documents/C++/RacingSimulator_CMake/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/User/Documents/C++/RacingSimulator_CMake/build/CMakeFiles/ZERO_CHECK.dir
-C:/Users/User/Documents/C++/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/race_lib.dir
-C:/Users/User/Documents/C++/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/ALL_BUILD.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/CMakeFiles/RasingSimulator_project.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/racing_lib.dir
+C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/ALL_BUILD.dir

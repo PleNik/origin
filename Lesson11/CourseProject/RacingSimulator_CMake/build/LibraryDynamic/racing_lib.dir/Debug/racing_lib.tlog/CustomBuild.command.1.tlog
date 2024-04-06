@@ -1,0 +1,10 @@
+^C:\USERS\USER\DOCUMENTS\C++\HOMWORKS\LESSON11\COURSEPROJECT\RACINGSIMULATOR_CMAKE\SRC\LIBRARYDYNAMIC\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

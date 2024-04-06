@@ -38,4 +38,4 @@ set (HEADERS
 	Race.h
 )
 
-add_library(race_lib SHARED ${SOURCES} ${HEADERS})
+add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS}) #${PROJECT_NAME} - встроенный макрос CMake, вместо racing_lib

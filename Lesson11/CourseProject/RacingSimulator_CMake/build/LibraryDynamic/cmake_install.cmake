@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/User/Documents/C++/RacingSimulator_CMake/src/LibraryDynamic
+# Install script for directory: C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src/LibraryDynamic
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\User\Documents\C++\RacingSimulator_CMake\build\CMakeFiles\c05c60ba883d80d911cd319dfb35f92e\generate.stamp.rule">
+    <CustomBuild Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\build\CMakeFiles\58c474a5bf5a49fba826496256e77950\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{12F2788D-9B0C-312C-B5E2-8B3D51C1B362}</UniqueIdentifier>
+      <UniqueIdentifier>{D72596E2-AB75-3A1B-8CF9-C160A78DB25B}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

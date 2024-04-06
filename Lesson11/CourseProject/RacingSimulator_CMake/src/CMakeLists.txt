@@ -15,3 +15,5 @@ add_executable(RasingSimulator_project RacingSimulator.cpp)#проект RasingS
 add_subdirectory(LibraryDynamic)#создаю каталог в каталоге build для промежуточных проектных файлов
 
 target_link_libraries(RasingSimulator_project racing_lib)#связываю проект клиента с динамической библиотекой - racing_lib
+
+target_compile_definitions(racing_lib PRIVATE RACESIMULATORLIBRARYDYNAMIC_EXPORTS)

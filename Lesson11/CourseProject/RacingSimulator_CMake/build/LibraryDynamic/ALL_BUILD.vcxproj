@@ -25,7 +25,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{63E7E576-6242-3710-AD48-B83E324CA9B0}</ProjectGuid>
+    <ProjectGuid>{4FB559DF-527A-3B3F-9E83-AD0A18FE2E20}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -69,7 +69,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\User\Documents\C++\RacingSimulator_CMake\src\LibraryDynamic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\User\Documents\C++\RacingSimulator_CMake\src\LibraryDynamic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -89,7 +89,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\User\Documents\C++\RacingSimulator_CMake\src\LibraryDynamic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -99,7 +99,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\User\Documents\C++\RacingSimulator_CMake\src\LibraryDynamic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -108,11 +108,11 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\User\Documents\C++\RacingSimulator_CMake\src\LibraryDynamic\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\src\LibraryDynamic\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/User/Documents/C++/RacingSimulator_CMake/src/LibraryDynamic/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src/LibraryDynamic/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -121,11 +121,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\User\Documents\C++\RacingSimulator_CMake\build\LibraryDynamic\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\build\LibraryDynamic\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/User/Documents/C++/RacingSimulator_CMake/src/LibraryDynamic/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src/LibraryDynamic/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -134,11 +134,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\User\Documents\C++\RacingSimulator_CMake\build\LibraryDynamic\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\build\LibraryDynamic\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/User/Documents/C++/RacingSimulator_CMake/src/LibraryDynamic/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src/LibraryDynamic/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -147,11 +147,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\User\Documents\C++\RacingSimulator_CMake\build\LibraryDynamic\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\build\LibraryDynamic\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/User/Documents/C++/RacingSimulator_CMake/src/LibraryDynamic/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src/LibraryDynamic/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/src -BC:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build --check-stamp-file C:/Users/User/Documents/C++/Homworks/Lesson11/CourseProject/RacingSimulator_CMake/build/LibraryDynamic/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -160,22 +160,22 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\User\Documents\C++\RacingSimulator_CMake\build\LibraryDynamic\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\build\LibraryDynamic\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\User\Documents\C++\RacingSimulator_CMake\build\ZERO_CHECK.vcxproj">
-      <Project>{9DFF971E-0B50-3D15-A505-56CECA70E220}</Project>
+    <ProjectReference Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\build\ZERO_CHECK.vcxproj">
+      <Project>{48D7FCFF-92D4-3F33-A6DB-C69D04320CE2}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\User\Documents\C++\RacingSimulator_CMake\build\LibraryDynamic\race_lib.vcxproj">
-      <Project>{E2C7894C-9AF9-30AD-BF2A-99A1EDEF90F9}</Project>
-      <Name>race_lib</Name>
+    <ProjectReference Include="C:\Users\User\Documents\C++\Homworks\Lesson11\CourseProject\RacingSimulator_CMake\build\LibraryDynamic\racing_lib.vcxproj">
+      <Project>{952D63F8-5FE7-36C5-9463-C294F11F7856}</Project>
+      <Name>racing_lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
