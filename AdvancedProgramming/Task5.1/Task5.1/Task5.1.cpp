@@ -6,11 +6,20 @@ void squaring(T& a) {
     a *= a;
 }
 
-template<>
-void squaring(std::vector<int>& v) {
+template<class T>
+void squaring(std::vector<T>& v) {
     for (auto& i : v) {
         i *= i;
     }
+}
+template<class T>
+void print(std::vector<T>& v) {
+    for (auto it = v.begin(); it != v.end(); it++) {
+        if (it < (v.end() - 1))
+            std::cout << *it << ", ";
+        else std::cout << *it;
+    }
+    std::cout << std::endl;
 }
 
 int main() {
@@ -19,15 +28,20 @@ int main() {
     squaring(x);
     std::cout << "[OUT]: " << x << std::endl;
 
-    std::vector<int> vect {-1, 4, 8};
+    std::vector<int> vect1 {-1, 4, 8};
     std::cout << "[IN]: ";
-    for (const auto i : vect)
-        std::cout << i << ", ";
-    std::cout << std::endl;
+    print(vect1);
 
-    squaring(vect);
+    squaring(vect1);
     std::cout << "[OUT]: ";
-    for (const auto& i : vect)
-        std::cout << i << ", ";
+    print(vect1);
+
+    std::vector<double> vect2{ -1.4, 4.6, 8.3 };
+    std::cout << "[IN]: ";
+    print(vect2);
+
+    squaring(vect2);
+    std::cout << "[OUT]: ";
+    print(vect2);
 
 }
