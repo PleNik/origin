@@ -1,20 +1,46 @@
-﻿// Task5.2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
 
-#include <iostream>
+template<class T>
+class Table {
+	unsigned int m_rows;
+	unsigned int m_cols;
+	T** arr;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+public:
+	Table(int rows, int cols) : m_rows(rows), m_cols(cols) {
+		arr = new T * [m_rows];
+		for (int i = 0; i < rows; i++)
+			arr[i] = new T[m_cols];
+	}
+
+	~Table() {
+		for (int i = 0; i < m_rows; i++)
+			delete arr[i];
+
+		delete[] arr;
+	}
+
+	void add_element(T value, unsigned rows, unsigned cols) {
+		arr[rows][cols] = value;
+	}
+
+	T get_element(unsigned rows_i, unsigned cols_i){
+		return arr[rows_i][cols_i];
+	}
+};
+
+int main() {
+	auto test = Table<int>(2, 3);
+
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 3; j++) {
+			test.add_element(j, i, j);
+		}
+	}
+
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 3; j++) {
+			std::cout << test.get_element(i, j) << " ";
+		}
+	}
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
