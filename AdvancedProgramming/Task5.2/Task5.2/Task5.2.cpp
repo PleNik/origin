@@ -29,6 +29,7 @@ public:
 	}
 };
 
+
 int main() {
 	auto test = Table<int>(2, 3);
 
