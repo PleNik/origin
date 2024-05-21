@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{50e86552-431f-47c7-8487-381b4b23fdae}</ProjectGuid>
-    <RootNamespace>CourseProjectIniFilesParser</RootNamespace>
+    <ProjectGuid>{d1ac73ea-dc3a-4c68-836f-614f8bb1b7fc}</ProjectGuid>
+    <RootNamespace>IniParser</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CourseProjectIniFilesParser.cpp" />
+    <ClCompile Include="IniParser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
