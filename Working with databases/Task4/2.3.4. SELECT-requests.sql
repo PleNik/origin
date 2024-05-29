@@ -50,7 +50,6 @@ JOIN artist a ON t.artist_id  = a.id
 GROUP BY a.name, c.name
 HAVING a.name = 'Joe Dassin';
 
-
 --Задание 4
 -- 1. Названия альбомов, в которых присутствуют исполнители более чем одного жанра
 SELECT alb.name, count(*) FROM album alb
@@ -62,10 +61,9 @@ GROUP BY alb.name
 HAVING count(*)>1;
 
 --2. Наименования треков, которые не входят в сборники
-SELECT t.name FROM collection c
-JOIN trackcollection tc ON c.id = tc.collection_id
-JOIN track t ON tc.track_id = t.id;
---выводит те, треки,которые входят. Как сделать, чтобы выводил те, которые не входят?
+SELECT t.name FROM track t
+LEFT JOIN trackcollection tc ON t.id = tc.track_id
+WHERE tc.track_id IS NULL;
 
 --3. Исполнитель или исполнители, написавшие самый короткий по продолжительности трек, — теоретически таких треков может быть несколько
 SELECT a.name, t.duration FROM artist a
@@ -74,8 +72,11 @@ GROUP BY a.name, t.duration
 HAVING t.duration = (SELECT MIN(t.duration) FROM track t);
 
 --4. Названия альбомов, содержащих наименьшее количество треков
-SELECT a.name, COUNT(t.album_id) number_of_tracks FROM album a
+WITH AlbumTrackCount AS (
+SELECT a.name, COUNT(t.album_id) AS number_of_tracks FROM album a
 JOIN track t ON a.id = t.album_id
 GROUP BY a.name
-ORDER BY number_of_tracks;
---выводит альбомы с количеством треков. Как сделать, чтобы считать количество и затем выводить его минимальное значение?
+)
+SELECT name FROM AlbumTrackCount
+WHERE number_of_tracks = (SELECT MIN(number_of_tracks) FROM AlbumTrackCount);
+

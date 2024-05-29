@@ -5,7 +5,7 @@ name VARCHAR(60) NOT NULL
 
 CREATE TABLE IF NOT EXISTS Artist (
 id SERIAL PRIMARY KEY,
-name VARCHAR(60) NOT NULL,
+name VARCHAR(60) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS GenreArtist (
@@ -44,4 +44,15 @@ CREATE TABLE IF NOT EXISTS TrackCollection (
 track_id INTEGER NOT NULL REFERENCES Track(id),
 collection_id INTEGER NOT NULL REFERENCES Collection (id),
 CONSTRAINT psk PRIMARY KEY (track_id, collection_id)
-);
+
+SELECT t.name FROM track t
+LEFT JOIN trackcollection tc ON t.id = tc.track_id
+WHERE tc.track_id IS NULL;
+
+WITH AlbumTrackCount AS (
+SELECT a.name, COUNT(t.album_id) AS number_of_tracks FROM album a
+JOIN track t ON a.id = t.album_id
+GROUP BY a.name
+)
+SELECT name FROM AlbumTrackCount
+WHERE number_of_tracks = (SELECT MIN(number_of_tracks) FROM AlbumTrackCount);
