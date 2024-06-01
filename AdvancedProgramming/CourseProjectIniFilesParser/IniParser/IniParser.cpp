@@ -2,8 +2,7 @@
 #include<fstream>
 #include<map>
 #include<string>
-#include <algorithm>
-#include <sstream>
+
 
 class ini_parser {
 public:
@@ -17,56 +16,28 @@ public:
     //шаблонный метод
     template<typename T>
     T get_value(std::string section_variable) {
+        T result{};
 
-        std::string section, var, val;
-        int index_dot = section_variable.find('.');
-        var = section_variable.substr(index_dot + 1);
-        section = section_variable.substr(0, section_variable.length() - var.length() - 1);
+        std::string string_value = get_value_string(section_variable);
 
-        if (Sections.find(section)->second.count(var) == 0) {
-            std::cout << "Переменной " << var << " в секции " << section << " нет" << std::endl;
-            std::cout << "В данной секции есть слеюующие переменные:" << std::endl;
-
-            for (const auto& it : Sections.find(section)->second) {
-                std::cout << it.first << std::endl;
-            }
-
-            throw  std::string{ "Перменная не найдена" };
+        if constexpr (std::is_same<int, T>::value) {
+            result = std::stoi(string_value);
         }
-        
-        val = Sections.find(section)->second.find(var)->second;
+        else if constexpr (std::is_same<double, T>::value) {
 
-        if (val.empty())
-            throw "Нет значения переменной";
-
-        return convertStringToType<T>(val);
-    }
-
-    template<>
-    std::string get_value(std::string section_variable) {
-
-        std::string section, var, val;
-        int index_dot = section_variable.find('.');
-        var = section_variable.substr(index_dot + 1);
-        section = section_variable.substr(0, section_variable.length() - var.length() - 1);
-
-        if (Sections.find(section)->second.count(var) == 0) {
-            std::cout << "Переменной " << var << " в секции " << section << " нет" << std::endl;
-            std::cout << "В данной секции есть слеюующие переменные:" << std::endl;
-
-            for (const auto& it : Sections.find(section)->second) {
-                std::cout << it.first << std::endl;
-            }
-
-            throw  std::string{ "Перменная не найдена" };
+            result = std::stod(string_value);
+        }
+        else if constexpr (std::is_same<float, T>::value) {
+            result = std::stof(string_value);
+        }
+        else if constexpr (std::is_same<std::string, T>::value) {
+            result = string_value;
+        }
+        else {
+            static_assert(sizeof(T) == -1, "no implementation for this type!");
         }
 
-        val = Sections.find(section)->second.find(var)->second;
-
-        if (val.empty())
-            throw "Нет значения переменной";
-
-        return Sections.find(section)->second.find(var)->second;
+        return result;
     }
 
 
@@ -80,13 +51,6 @@ private:
     std::map<std::string, std::map<std::string, std::string>> Sections;
     int count_of_line;
 
-    template<typename T>
-    T convertStringToType(const std::string& val) {
-        std::istringstream iss(val);
-        T converted_val;
-        iss >> converted_val;
-        return converted_val;
-    }
 
     void fillingSections() {
         fin.exceptions(std::ifstream::badbit | std::ifstream::failbit); //включение в классе ifstream обработки исключений
@@ -102,8 +66,8 @@ private:
 
                 //проверка на корректность синтаксиса в названии секции
                 if (line.find('[') != std::string::npos && line.find(']') != std::string::npos) {
-                    int pos_section_start = line.find('[');
-                    int pos_section_end = line.find(']');
+                    size_t pos_section_start = line.find('[');
+                    size_t pos_section_end = line.find(']');
                     section_name = line.substr(pos_section_start + 1, pos_section_end - pos_section_start - 1);
                     Sections.insert(std::pair<std::string, std::map<std::string, std::string>>(section_name, {}));
                 }
@@ -165,8 +129,31 @@ private:
         }
 
     }
-};
 
+    std::string get_value_string(const std::string& str) {
+        std::string section, var, val;
+
+        size_t index_dot = str.find('.');
+        var = str.substr(index_dot + 1);
+        section = str.substr(0, str.length() - var.length() - 1);
+
+        if (Sections.find(section)->second.count(var) == 0) {
+            std::cout << "Переменной " << var << " в секции " << section << " нет" << std::endl;
+            std::cout << "В данной секции есть следующие переменные:" << std::endl;
+
+            for (const auto& it : Sections.find(section)->second) {
+                std::cout << it.first << std::endl;
+            }
+            throw std::string{ "Переменная не найдена" };
+        }
+        val = Sections.find(section)->second.find(var)->second;
+
+        if (val.empty())
+            throw "Нет значения переменной";
+
+        return val;
+    }
+};
 
 
 int main() {
@@ -177,9 +164,18 @@ int main() {
 
         ini_parser parser(file_name);
 
-        auto value = parser.get_value<std::string>("Section1.var2");
+        std::cout << parser.get_value<double>("Section1.var1") << std::endl;
 
-        std::cout << value << std::endl;
+        std::cout << parser.get_value<float>("Section1.var1") << std::endl;
+
+        std::cout << parser.get_value<int>("Section2.var1") << std::endl;
+
+        std::cout << parser.get_value<std::string>("Section2.var2") << std::endl;
+
+        //std::cout << parser.get_value<float>("Section2.var") << std::endl;
+
+        std::cout << parser.get_value<float>("Section4.Vid") << std::endl;
+
     }
     catch (const std::ifstream::failure& ex) {
         std::cout << ex.what() << std::endl; //описание ошибки
@@ -191,9 +187,9 @@ int main() {
         std::cout << "Нет значения переменной" << std::endl;
     }
     catch (const std::exception& ex) {
-        std::cout << "Не корректный синтаксис в строке "<<ex.what() << std::endl;
+        std::cout << "Не корректный синтаксис в строке " << ex.what() << std::endl;
     }
-    catch(const std::string& variable_is_missing) {
+    catch (const std::string& variable_is_missing) {
         std::cout << variable_is_missing << std::endl;
     }
 
