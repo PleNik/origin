@@ -10,11 +10,6 @@ class Stock;
 class Shop;
 class Sale;
 
-class Book;
-class Stock;
-class Shop;
-class Sale;
-
 class Publisher {
 public:
 	std::string name;
