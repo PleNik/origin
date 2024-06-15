@@ -336,7 +336,7 @@ int main() {
                                      "port = 5432 "
                                      "dbname = Clients "
                                      "user = postgres "
-                                     "password = L29samolet";
+                                     "password = postgres";
 
         DbManagement client(strConnnection);
 
