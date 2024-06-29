@@ -24,16 +24,13 @@ public:
 
 };
 
-void swapData(Data& data1, Data& data2) {
-    //std::scoped_lock(data1.mtx, data2.mtx);
+void swapData1(Data& data1, Data& data2) {
 
-    data1.mtx.lock();
-    data2.mtx.lock();
-    std::unique_lock mutUniqLock1(data1.mtx, std::adopt_lock);
-    std::unique_lock mutUniqLock2(data2.mtx, std::adopt_lock);
+    std::lock(data1.mtx, data2.mtx);
+
+    std::lock_guard<std::mutex> lg1(data1.mtx, std::adopt_lock);
+    std::lock_guard<std::mutex> lg2(data2.mtx, std::adopt_lock);
     
-    //data1.mtx.lock();
-    //data2.mtx.lock();
 
     Data temp(0, 0, 0);
 
@@ -49,8 +46,44 @@ void swapData(Data& data1, Data& data2) {
     data2.md_value = temp.md_value;
     data2.mf_value = temp.mf_value;
 
-    //data1.mtx.unlock();
-    //data2.mtx.unlock();
+  
+}
+
+void swapData2(Data& data1, Data& data2) {
+    std::unique_lock<std::mutex>ul1(data1.mtx, std::defer_lock);
+    std::unique_lock<std::mutex>ul2(data2.mtx, std::defer_lock);
+
+    std::lock(ul1, ul2);
+
+    Data temp(0, 0, 0);
+    temp.mi_value = data1.mi_value;
+    temp.md_value = data1.md_value;
+    temp.mf_value = data1.mf_value;
+
+    data1.mi_value = data2.mi_value;
+    data1.md_value = data2.md_value;
+    data1.mf_value = data2.mf_value;
+
+    data2.mi_value = temp.mi_value;
+    data2.md_value = temp.md_value;
+    data2.mf_value = temp.mf_value;
+}
+
+void swapData3(Data& data1, Data& data2) {
+    std::scoped_lock(data1.mtx, data2.mtx);
+
+    Data temp(0, 0, 0);
+    temp.mi_value = data1.mi_value;
+    temp.md_value = data1.md_value;
+    temp.mf_value = data1.mf_value;
+
+    data1.mi_value = data2.mi_value;
+    data1.md_value = data2.md_value;
+    data1.mf_value = data2.mf_value;
+
+    data2.mi_value = temp.mi_value;
+    data2.md_value = temp.md_value;
+    data2.mf_value = temp.mf_value;
 }
 
 int main() {
@@ -67,8 +100,7 @@ int main() {
     std::cout << "========after swap============" << std::endl;
 
 
-    std::thread th(swapData, std::ref(data1), std::ref(data2));
-    //swapData(data1, data2);
+    std::thread th(swapData3, std::ref(data1), std::ref(data2));
 
     th.join();
 
