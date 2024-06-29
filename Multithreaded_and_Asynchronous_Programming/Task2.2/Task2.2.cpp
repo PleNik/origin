@@ -7,56 +7,65 @@
 #include"ConsolParameter.h"
 #include"Timer.h"
 
-std::mutex mtx;
+std::mutex mtx1;
+std::mutex mtx2;
 
-void printProcess(int sleep_for, int numThread) {
+void printProcess(int sleep_for, int index, int numThread) {
 
-    static int y = 1;
-
+    Consol_parameter con_par;
     Timer timer;
-    Consol_parameter c_param;
-
-    std::unique_lock mutexUniq(mtx);
+    static int y = 1;
+   
     timer.start();
-
     std::this_thread::sleep_for(std::chrono::milliseconds(sleep_for));
 
-    std::cout << numThread << "\t" << std::this_thread::get_id() << "\t";
-
-    c_param.SetColor(15, 15);
-    for (size_t i = 0; i < sleep_for / 1000; i++) {
-        std::cout << '#' << " ";
+    mtx1.lock();
+    std::cout << index << "\t";
+    std::cout << std::this_thread::get_id() << std::endl;
+    
+    for (size_t x = 16; x < 26; x++) {
+        mtx2.lock();
+        con_par.SetPosition(x, y);
+        con_par.SetColor(15, 15);
+        std::cout << " " << std::endl;
+        mtx2.unlock();
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        con_par.SetColor(15, 0);
+        con_par.SetPosition(30, y);
+        timer.print();
     }
-    c_param.SetColor(15, 0);
-
-    c_param.SetPosition(50, y);
+    
+    mtx1.unlock();
     y++;
-
-    timer.print();
-
 }
 
 
 int main() {
 
-    int numberOfThreads = 5;
+    setlocale(LC_ALL, "ru");
+
+    srand(time(NULL));
+
+    int numberOfThread = 4;
 
     Consol_parameter c_par;
-
-    std::vector<std::thread> vt(numberOfThreads);
+    Timer timer;
 
     std::cout << "#       id      Progress Bar";
-    c_par.SetPosition(50, 0);
-
+    c_par.SetPosition(30, 0);
     std::cout << "Time" << std::endl;
 
-    for (size_t i = 0; i < numberOfThreads; i++) {
-        vt[i] = std::thread(printProcess, (rand() % (10000 - 1000 + 1) + 1000), i);
+    std::vector<std::thread> v_th(numberOfThread);
+
+    timer.start();
+    for (size_t i = 0; i < numberOfThread; i++) {
+        v_th[i] = std::thread(printProcess, rand() % 5001, i, numberOfThread);
     }
 
-    for (size_t i = 0; i < numberOfThreads; i++) {
-        vt[i].join();
+    for (size_t i = 0; i < numberOfThread; i++) {
+        v_th[i].join();
     }
-
+   
+   
     return 0;
 }
