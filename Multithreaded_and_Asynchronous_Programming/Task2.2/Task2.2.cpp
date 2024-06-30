@@ -7,65 +7,70 @@
 #include"ConsolParameter.h"
 #include"Timer.h"
 
-std::mutex mtx1;
-std::mutex mtx2;
+std::mutex mtx;
 
-void printProcess(int sleep_for, int index, int numThread) {
+void printProcess( int sleepFor, int index, int numThread) {
 
-    Consol_parameter con_par;
+    Consol_parameter consol_parameter;
     Timer timer;
+  
     static int y = 1;
-   
-    timer.start();
-    std::this_thread::sleep_for(std::chrono::milliseconds(sleep_for));
 
-    mtx1.lock();
-    std::cout << index << "\t";
+    timer.start();
+    std::this_thread::sleep_for(std::chrono::milliseconds(sleepFor));
+
+    consol_parameter.SetPosition(0, y);
+    std::cout << index;
+    consol_parameter.SetPosition(6, y);
     std::cout << std::this_thread::get_id() << std::endl;
-    
-    for (size_t x = 16; x < 26; x++) {
-        mtx2.lock();
-        con_par.SetPosition(x, y);
-        con_par.SetColor(15, 15);
+
+    for (size_t x = 12; x < 22; x++) {
+        mtx.lock();
+        consol_parameter.SetPosition(x, y);
+        consol_parameter.SetColor(15, 15);
         std::cout << " " << std::endl;
-        mtx2.unlock();
+        mtx.unlock();
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        con_par.SetColor(15, 0);
-        con_par.SetPosition(30, y);
-        timer.print();
+        
+        consol_parameter.SetColor(15, 0);
     }
-    
-    mtx1.unlock();
+   
+    consol_parameter.SetPosition(30, y);
+    timer.print();
+   
     y++;
 }
 
 
 int main() {
 
-    setlocale(LC_ALL, "ru");
+    Consol_parameter consol_parametr;
 
-    srand(time(NULL));
+    int numberOfThreads = 5;
+    int calculationLength = 500;
 
-    int numberOfThread = 4;
+    consol_parametr.SetPosition(0, 0);
+    std::cout << '#';
 
-    Consol_parameter c_par;
-    Timer timer;
+    consol_parametr.SetPosition(6, 0);
+    std::cout << "id";
 
-    std::cout << "#       id      Progress Bar";
-    c_par.SetPosition(30, 0);
-    std::cout << "Time" << std::endl;
+    consol_parametr.SetPosition(12, 0);
+    std::cout << "Progress Bar";
 
-    std::vector<std::thread> v_th(numberOfThread);
+    consol_parametr.SetPosition(30, 0);
+    std::cout << "Time";
 
-    timer.start();
-    for (size_t i = 0; i < numberOfThread; i++) {
-        v_th[i] = std::thread(printProcess, rand() % 5001, i, numberOfThread);
-    }
+    std::thread* t = new std::thread[numberOfThreads];
 
-    for (size_t i = 0; i < numberOfThread; i++) {
-        v_th[i].join();
-    }
-   
-   
+    for (size_t i = 0; i < numberOfThreads; i++)
+        t[i] = std::thread(printProcess, calculationLength, i, numberOfThreads);
+
+    for (size_t i = 0; i < numberOfThreads; i++)
+        t[i].join();
+
+    delete[]t;
+
+
     return 0;
 }
