@@ -3,46 +3,71 @@
 #include<thread>
 #include<mutex>
 #include<iomanip>
+#include<exception>
 
 #include"ConsolParameter.h"
 #include"Timer.h"
 
 std::mutex mtx;
 
-void printProcess( int sleepFor, int index, int numThread) {
+class ThreadException : public std::exception {
+   
+};
+
+void printProcess( int sleepFor, int index, int numberOfTreads) {
+
+    srand(time(NULL));
 
     Consol_parameter consol_parameter;
     Timer timer;
-  
-    static int y = 1;
 
     timer.start();
     std::this_thread::sleep_for(std::chrono::milliseconds(sleepFor));
 
-    consol_parameter.SetPosition(0, y);
+    mtx.lock();
+    consol_parameter.SetPosition(0, index+1);
     std::cout << index;
-    consol_parameter.SetPosition(6, y);
+    consol_parameter.SetPosition(6, index + 1);
     std::cout << std::this_thread::get_id() << std::endl;
-
+    mtx.unlock();
     for (size_t x = 12; x < 22; x++) {
-        mtx.lock();
-        consol_parameter.SetPosition(x, y);
-        consol_parameter.SetColor(15, 15);
-        std::cout << " " << std::endl;
-        mtx.unlock();
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        try {
+            
+            mtx.lock();
+            consol_parameter.SetPosition(x, index + 1);
+            int val_exc = rand() % 10;
+            if (val_exc == 3) {
+                throw ThreadException();
+            }
+            consol_parameter.SetColor(15, 15);
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            std::cout << " " << std::endl;
+            mtx.unlock();
+
+        }
+        catch (...){
+            consol_parameter.SetColor(20, 20);
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            std::cout << " " << std::endl;
+            mtx.unlock();
+        }
+        
         
         consol_parameter.SetColor(15, 0);
+        
     }
-   
-    consol_parameter.SetPosition(30, y);
+    mtx.lock();
+    consol_parameter.SetPosition(30, index + 1);
     timer.print();
-   
-    y++;
+    mtx.unlock();
+  
+    consol_parameter.SetPosition(0, numberOfTreads + 1);
 }
 
 
 int main() {
+
+   
 
     Consol_parameter consol_parametr;
 
