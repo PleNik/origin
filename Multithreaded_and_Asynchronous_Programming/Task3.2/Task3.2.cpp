@@ -1,40 +1,38 @@
-﻿#include <iostream>
-#include<future>
-#include<thread>
-#include<list>
+﻿#include <algorithm>
+#include <future>
+#include <iostream>
+#include <vector>
+#include <chrono>
+#include <thread>
 
+template <typename TIterator, typename TProc>
+void forEach(TIterator aBeginIterator, TIterator aEndIterator,
+    TProc aProc) {
+    if (aEndIterator == aBeginIterator) {
+        return;
+    }
 
-template<typename Iterator, typename Func>
-void parallel_for_each(Iterator first, Iterator last, Func f) {
-	unsigned long const length = std::distance(first, last);
-	unsigned long const max_chunk_size = 2;
-	if (length <= max_chunk_size) {
-		f();
-		return;
-	}
+    auto procFuture{ std::async(aProc, *aBeginIterator) };
+    forEach(aBeginIterator + 1, aEndIterator, aProc);
+    procFuture.wait();
+}
 
-	Iterator mid_point = first;
-	std::advance(mid_point, length / 2);
-	std::future<void> first_half_result = std::async(parallel_for_each<Iterator, Func>, first, mid_point, f);
-	std::future<void> second_half_result = std::async(parallel_for_each<Iterator, Func>, mid_point, last, f);
-	
+std::mutex mutex;
 
-	first_half_result.get();
-	second_half_result.get();
+void bigDelay(int aValue) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+    std::lock_guard mutexLockGuard{ mutex };
+    std::cout << "aValue: " << aValue << std::endl;
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }
 
 int main() {
+    std::vector<int> vector{ 2, 5, 1, 6, 8, 10, 15, 11 };
 
-	std::list<int> myList = { 15, 64, 954, 23, 88 };
+    bigDelay(500);
+    forEach(vector.begin(), vector.end(), bigDelay);
 
-	auto it_begin = myList.begin();
-	auto it_end = myList.end();
-	parallel_for_each(it_begin, it_end, [&]() {
-		for (auto it = it_begin; it != it_end; it++) {
-			std::cout << *it << std::endl;
-		}
-		std::cout << std::endl;
-		});
-	
-	return 0;
+    return 0;
 }
