@@ -10,7 +10,7 @@ set(PostgreSQL_ADDITIONAL_VERSIONS "16")
 add_subdirectory("C:\\Work\\Projects\\libpqxx-7.9.0" libpqxx-build)
 
 #подключаем к проекту исполняемый файл- бинарник
-add_executable(StudentDataBase001 main.cpp "sql_query_builder.h" "sql_query_builder.cpp" "data.h")
+add_executable(StudentDataBase001 main.cpp "sql_query_builder.h" "sql_query_builder.cpp" )
 
 #подключаем поддержку С++ 17
 target_compile_features(StudentDataBase001 PRIVATE cxx_std_17)

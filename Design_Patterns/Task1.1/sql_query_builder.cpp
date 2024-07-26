@@ -3,97 +3,110 @@
 SqlSelectQueryBuilder::SqlSelectQueryBuilder() {
     std::string strConnnection = "host = 127.0.0.1 "
         "port = 5432 "
-        "dbname = DbPersons "
+        "dbname = StudentsBuilder "
         "user = postgres "
-        "password = postgres";
+        "password = L29samolet";
 
 	c = std::make_shared<pqxx::connection>(strConnnection);
-    data.table_name = "Person";
+    table_name = "students";
+
     pqxx::transaction t{ *c };
-    std::string create_table = "CREATE TABLE IF NOT EXISTS " + data.table_name + " (person_id SERIAL NOT NULL, PRIMARY KEY(person_id)); ";
-    t.exec(create_table);
+
+    std::string create_table_students = "CREATE TABLE IF NOT EXISTS Students("
+            "student_id SERIAL NOT NULL, "
+            "first_name VARCHAR(60) NOT NULL, "
+            "last_name VARCHAR(60) NOT NULL, "
+            "score INTEGER NULL, "
+            "email VARCHAR(40) NOT NULL, "
+        "PRIMARY KEY (student_id));";
+    t.exec(create_table_students);
+
+    std::string create_table_phone = "CREATE TABLE IF NOT EXISTS Phone("
+        "student_id INTEGER NOT NULL, "
+        "number_phone VARCHAR(64) NOT NULL, "
+        "PRIMARY KEY (student_id, number_phone), "
+        "FOREIGN KEY (student_id) "
+        "REFERENCES Students(student_id) "
+        "ON DELETE CASCADE);";
+    t.exec(create_table_phone);
+
     t.commit();
 }
 
-SqlSelectQueryBuilder& SqlSelectQueryBuilder::SelectAll() {
 
-    std::string find_all = "SELECT * FROM " + data.table_name + "; ";
+SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddColumn(std::string column_name) {
 
     pqxx::transaction t{ *c };
+    
+    std::string add_column = "SELECT " + t.esc(column_name) + " FROM " + table_name + "; ";
 
-    auto values = t.query<std::string>(find_all);
+    auto values = t.query<std::string>(add_column);
 
     for (std::tuple<std::string> value : values) {
 
         std::cout << std::get<0>(value) << std::endl;
     }
-
+    std::cout << std::endl;
+   
     return *this;
 }
 
-SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddColumn(std::string name_of_column) {
-    pqxx::transaction t{ *c };
-    
-    std::string add_column = "ALTER TABLE " + data.table_name + " ADD IF NOT EXISTS " + t.esc(name_of_column) + " CHARACTER VARYING(20) NULL; ";
+SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddColumn() {
 
-    t.exec(add_column);
-    t.commit();
+    std::string find_all = "SELECT * FROM " + table_name + "; ";
+
+    pqxx::transaction t{ *c };
+
+    auto values = t.query<int, std::string, std::string, int, std::string>(find_all);
+
+    for (std::tuple<int, std::string, std::string, int, std::string> value : values) {
+
+        std::cout << std::get<0>(value) << " " << std::get<1>(value) << " " << std::get<2>(value) << " " << std::get<3>(value) << " " <<std::get<4>(value) << std::endl;
+    }
+    std::cout << std::endl;
+
     return *this;
 }
 
 SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddFrom(std::string new_table_name) {
-    pqxx::transaction t{ *c };
 
-    std::string rename_table = "ALTER TABLE " + data.table_name + " RENAME TO " + t.esc(new_table_name) + "; ";
-    
-    t.exec(rename_table);
-    t.commit();
-
-    data.table_name = new_table_name;
+    table_name = new_table_name;
 
     return *this;
 }
 
-void SqlSelectQueryBuilder::AddPerson(std::string name, std::string phone) {
-    pqxx::transaction t{ *c };
-
-    std::string add_person = "INSERT INTO " + data.table_name + " (name, phone) Values('" + t.esc(name) + "', '" + t.esc(phone) + "')";
-    t.exec(add_person);
-    t.commit();
-}
 
 SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddWhere(std::string id_name, std::string number_name) {
+
+    pqxx::transaction t{ *c };
 
     std::string find_person;
 
     if (id_name == "id") {
-        find_person = "SELECT name, phone FROM " + data.table_name + " WHERE person_id = '" + number_name + "';";
+        find_person = "SELECT first_name, last_name FROM " + table_name + " WHERE student_id = '" + t.esc(number_name) + "';";
     }
     else {
-        find_person = "SELECT name, phone FROM " + data.table_name + " WHERE name = '" + number_name + "';";
+        find_person = "SELECT first_name, last_name FROM " + table_name + " WHERE first_name = '" + t.esc(number_name) + "';";
     }
     
-    pqxx::transaction t{ *c };
 
     auto values = t.query<std::string, std::string>(find_person);
 
     for (std::tuple<std::string, std::string> value : values) {
         
-        std::cout << std::get<0>(value) << " has phone " << std::get<1>(value) << std::endl;
+        std::cout << std::get<0>(value) << " " << std::get<1>(value) << std::endl;
     }
     
     return *this;
 }
 
-
 bool SqlSelectQueryBuilder::BuildQuery() const{
-   std::string find_person = "SELECT person_id FROM " + data.table_name + " WHERE person_id = 42;";
 
    pqxx::transaction t{ *c };
 
-   std::string id = t.query_value<std::string>("SELECT person_id FROM " + data.table_name + " WHERE person_id = 42");
+   std::string id = t.query_value<std::string>("SELECT student_id FROM " + table_name + " WHERE student_id = 7;");
 
-   if (std::stoi(id) == 42)
+   if (std::stoi(id) == 7)
        return true;
    else
        return false;
