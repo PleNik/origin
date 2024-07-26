@@ -5,7 +5,7 @@ SqlSelectQueryBuilder::SqlSelectQueryBuilder() {
         "port = 5432 "
         "dbname = StudentsBuilder "
         "user = postgres "
-        "password = L29samolet";
+        "password =postgres";
 
 	c = std::make_shared<pqxx::connection>(strConnnection);
     table_name = "students";
