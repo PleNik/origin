@@ -33,20 +33,11 @@ SqlSelectQueryBuilder::SqlSelectQueryBuilder() {
     t.commit();
 }
 
-
 SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddColumn(std::string column_name) {
 
-    pqxx::transaction t{ *c };
     
-    std::string add_column = "SELECT " + t.esc(column_name) + " FROM " + table_name + "; ";
+    std::string add_column = "SELECT " + column_name + " FROM " + table_name + "; ";
 
-    auto values = t.query<std::string>(add_column);
-
-    for (std::tuple<std::string> value : values) {
-
-        std::cout << std::get<0>(value) << std::endl;
-    }
-    std::cout << std::endl;
    
     return *this;
 }
@@ -54,16 +45,6 @@ SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddColumn(std::string column_name)
 SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddColumn() {
 
     std::string find_all = "SELECT * FROM " + table_name + "; ";
-
-    pqxx::transaction t{ *c };
-
-    auto values = t.query<int, std::string, std::string, int, std::string>(find_all);
-
-    for (std::tuple<int, std::string, std::string, int, std::string> value : values) {
-
-        std::cout << std::get<0>(value) << " " << std::get<1>(value) << " " << std::get<2>(value) << " " << std::get<3>(value) << " " <<std::get<4>(value) << std::endl;
-    }
-    std::cout << std::endl;
 
     return *this;
 }
@@ -78,33 +59,23 @@ SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddFrom(std::string new_table_name
 
 SqlSelectQueryBuilder& SqlSelectQueryBuilder::AddWhere(std::string id_name, std::string number_name) {
 
-    pqxx::transaction t{ *c };
 
     std::string find_person;
 
     if (id_name == "id") {
-        find_person = "SELECT first_name, last_name FROM " + table_name + " WHERE student_id = '" + t.esc(number_name) + "';";
+        find_person = "SELECT first_name, last_name FROM " + table_name + " WHERE student_id = '" + number_name + "';";
     }
     else {
-        find_person = "SELECT first_name, last_name FROM " + table_name + " WHERE first_name = '" + t.esc(number_name) + "';";
+        find_person = "SELECT first_name, last_name FROM " + table_name + " WHERE first_name = '" + number_name+ "';";
     }
     
-
-    auto values = t.query<std::string, std::string>(find_person);
-
-    for (std::tuple<std::string, std::string> value : values) {
-        
-        std::cout << std::get<0>(value) << " " << std::get<1>(value) << std::endl;
-    }
     
     return *this;
 }
 
 bool SqlSelectQueryBuilder::BuildQuery() const{
 
-   pqxx::transaction t{ *c };
-
-   std::string id = t.query_value<std::string>("SELECT student_id FROM " + table_name + " WHERE student_id = 7;");
+   std::string id = "SELECT student_id FROM " + table_name + " WHERE student_id = 7;";
 
    if (std::stoi(id) == 7)
        return true;
