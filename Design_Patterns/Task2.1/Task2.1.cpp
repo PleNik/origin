@@ -12,13 +12,13 @@ public:
 
 class DecoratedText : public Text {
 public:
-    explicit DecoratedText(Text* text) : text_(text) {}
-    Text* text_;
+    explicit DecoratedText(std::shared_ptr<Text> text) : text_(std::move(text)) {}
+    std::shared_ptr<Text> text_;
 };
 
 class ItalicText : public DecoratedText {
 public:
-    explicit ItalicText(Text* text) : DecoratedText(text) {}
+    explicit ItalicText(std::shared_ptr<Text> text) : DecoratedText(std::move(text)) {}
     void render(const std::string& data)  const {
         std::cout << "<i>";
         text_->render(data);
@@ -28,7 +28,7 @@ public:
 
 class BoldText : public DecoratedText {
 public:
-    explicit BoldText(Text* text) : DecoratedText(text) {}
+    explicit BoldText(std::shared_ptr<Text> text) : DecoratedText(std::move(text)) {}
     void render(const std::string& data) const {
         std::cout << "<b>";
         text_->render(data);
@@ -38,7 +38,7 @@ public:
 
 class Paragraph : public DecoratedText {
 public:
-    explicit Paragraph(Text* text) : DecoratedText(text) {}
+    explicit Paragraph(std::shared_ptr<Text> text) : DecoratedText(std::move(text)) {}
     void render(const std::string& data) const {
         std::cout << "<p>";
         text_->render(data);
@@ -48,7 +48,7 @@ public:
 
 class Reversed : public DecoratedText {
 public:
-    explicit Reversed(Text* text) : DecoratedText(text) {}
+    explicit Reversed(std::shared_ptr<Text> text) : DecoratedText(std::move(text)) {}
     void render(const std::string& data) const {
         std::string reversed_str = data;
         std::reverse(reversed_str.begin(), reversed_str.end());
@@ -66,32 +66,38 @@ public:
 
 class AdapterLink : public TargetLink {
 public:
-    AdapterLink(Text* text) : text_(text) {}
+    AdapterLink(std::shared_ptr<Text> text) : text_(std::move(text)) {}
     
 
 private:
-    Text* text_;
+    std::shared_ptr<Text> text_;
 };
 
 class Link : public AdapterLink {
 public:
-    Link(Text* text) : AdapterLink(text){}
+    Link(std::shared_ptr<Text> text) : AdapterLink(std::move(text)){}
 };
 
 int main() {
-    auto text_block = new ItalicText(new BoldText(new Text()));
+    
+    
+    Text text;
+    auto text_not_decoreted = std::make_shared<Text>();
+    auto text_bold = std::make_shared<BoldText>(text_not_decoreted);
+    auto text_block = std::make_shared<ItalicText>(text_bold);
+    
     text_block->render("Hello world");
     std::cout << std::endl;
 
-    auto text_paragraph = new Paragraph(new Text());
+    auto text_paragraph = std::make_shared < Paragraph>(text_not_decoreted);
     text_paragraph->render("Hello world");
     std::cout << std::endl;
 
-    auto text_reverse = new Reversed(new Text());
+    auto text_reverse = std::make_shared <Reversed>(text_not_decoreted);
     text_reverse->render("Hello world");
     std::cout << std::endl;
 
-    auto text_link = new Link(new Text());
+    auto text_link = std::make_shared <Link>(text_not_decoreted);
     text_link->render("netology.ru", "Hello world");
 
     return 0;
