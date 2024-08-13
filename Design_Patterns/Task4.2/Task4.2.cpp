@@ -1,16 +1,10 @@
 ﻿#include <fstream>
 
-struct Printable {
-    virtual ~Printable() = default;
-
-    virtual std::string print() const = 0;
-};
-
-class PrintableBase : public Printable {
+class PrintableBase {
 public:
     PrintableBase(std::string text) : text_(std::move(text)) {}
 
-        std::string print() const override {
+       virtual std::string print() const {
             return text_;
         }
 
@@ -76,7 +70,7 @@ int main() {
     saveToAsText(fout_txt, data_text);
     fout_txt.close();
 
-    DataText data_html("format HTML");
+    DataHTML data_html("format HTML");
     std::ofstream fout_html("file_html.html");
     saveToAsText(fout_html, data_html);
 
