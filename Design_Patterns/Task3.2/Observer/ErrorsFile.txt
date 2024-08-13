@@ -1,8 +1,3 @@
-error started
-fatal error started
-warning happened
-errorhappened
-fatal error happened
-warning happened
+
 error happened
 fatal error happened

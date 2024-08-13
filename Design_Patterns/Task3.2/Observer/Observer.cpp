@@ -1,23 +1,14 @@
 ﻿#include <iostream>
 #include<vector>
 #include<fstream>
+#include<memory>
 
-struct IObserver {
-	virtual ~IObserver() = default;
-
-	virtual void onWarning(const std::string& message) = 0;
-	virtual void onError(const std::string& message) = 0;
-	virtual void onFatalError(const std::string& message) = 0;
-
-	
-};
-
-class Observer : public IObserver {
+class Observer {
 public:
 	
-	void onWarning(const std::string& message) override{}
-	void onError(const std::string& message) override {}
-	void onFatalError(const std::string& message) override {}
+	virtual void onWarning(const std::string& message) {}
+	virtual void onError(const std::string& message) {}
+	virtual void onFatalError(const std::string& message) {}
 
 protected:
 	std::string path_;
@@ -99,70 +90,55 @@ public:
 };
 
 
-struct IObserved {
-	virtual ~IObserved() = default;
-
-	virtual void warning(const std::string& message) const = 0;
-	virtual void error(const std::string& message) const = 0;
-	virtual void fatalError(const std::string& message) const = 0;
-};
-
-class Observed : public IObserved {
+class Observed {
 public:
-	~Observed() {
+	
+	void warning(const std::string& message)  const {
+
+		NotifyObserves(&Observer::onWarning, message);
+	}
+
+	void error(const std::string& message) const {
 		
-		for (auto it = observers_.begin(); it != observers_.end(); it ++) {
-			delete *it;
-		}
-	}
-	void warning(const std::string& message)  const override {
-
-		NotifyObserves(message);
+		NotifyObserves(&Observer::onError, message);
 	}
 
-	void error(const std::string& message) const override {
-		
-		NotifyObserves(message);
+	void fatalError(const std::string& message) const {
+
+		NotifyObserves(&Observer::onFatalError, message);
 	}
 
-	void fatalError(const std::string& message) const override {
-
-		NotifyObserves(message);
-	}
-
-	void Subscribe(IObserver* observer) {
-		observers_.push_back(observer);
+	void Subscribe(std::weak_ptr<Observer> observer) {
+		observers_.push_back(std::move(observer));
 	}
 
 private:
-	void NotifyObserves(const std::string& message) const {
+	void NotifyObserves(void(Observer::* ptr)(const std::string&), const std::string& message) const {
 		for (auto& observer : observers_) {
-			if (message == "warning started")
-				observer->onWarning(message);
-			else if (message == "error started")
-				observer->onError(message);
-			else
-				observer->onFatalError(message);
+			if (auto strong_observer = observer.lock())
+				(strong_observer.get()->*ptr)(message);
 		}
 			
 	}
-	std::vector<IObserver*> observers_;
+	std::vector<std::weak_ptr<Observer>> observers_;
 };
 
 int main() {
 	std::string path = "ErrorsFile.txt";
 	Observed observed;
-	auto observer1 = new ObserverWarning();
-	auto observer2 = new ObserverError(path);
-	auto observer3 = new ObserverFatalError(path);
 
-	observed.Subscribe(observer1);
-	observed.Subscribe(observer2);
-	observed.Subscribe(observer3);
+	auto observer_warning = std::make_shared<ObserverWarning>();
+	auto observer_error = std::make_shared<ObserverError>(path);
+	auto observer_fatal_error = std::make_shared<ObserverFatalError>(path);
+
+	observed.Subscribe(observer_warning);
+	observed.Subscribe(observer_error);
+	observed.Subscribe(observer_fatal_error);
 
 	observed.warning("warning happened");
 	observed.error("error happened");
 	observed.fatalError("fatal error happened");
+
 
 	return 0;
 }
