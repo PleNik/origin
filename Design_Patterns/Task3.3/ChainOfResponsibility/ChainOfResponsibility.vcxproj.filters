@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ChainOfResponsibility.cpp.cpp">
+    <ClCompile Include="ChainOfResponsibility.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
