@@ -1,0 +1,70 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-a026b1689fff7c4e9e9b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "QtCoreModules",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "QtCoreModules::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-QtCoreModules-Debug-767d8e0298616c8efa9e.json",
+					"name" : "QtCoreModules",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "QtCoreModules_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-QtCoreModules_autogen-Debug-f75c672ee090d5cf8325.json",
+					"name" : "QtCoreModules_autogen",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Work/HomeWork/Qt/2. Qt_core_modules/QtCoreModules/Build/Debug",
+		"source" : "C:/Work/HomeWork/Qt/2. Qt_core_modules/QtCoreModules"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
