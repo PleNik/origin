@@ -1,8 +1,0 @@
-C:/Work/HomeWork/Qt/2. Qt_core_modules/build-QtCoreModules-Desktop-Debug/CMakeFiles/QtCoreModules.dir
-C:/Work/HomeWork/Qt/2. Qt_core_modules/build-QtCoreModules-Desktop-Debug/CMakeFiles/edit_cache.dir
-C:/Work/HomeWork/Qt/2. Qt_core_modules/build-QtCoreModules-Desktop-Debug/CMakeFiles/rebuild_cache.dir
-C:/Work/HomeWork/Qt/2. Qt_core_modules/build-QtCoreModules-Desktop-Debug/CMakeFiles/list_install_components.dir
-C:/Work/HomeWork/Qt/2. Qt_core_modules/build-QtCoreModules-Desktop-Debug/CMakeFiles/install.dir
-C:/Work/HomeWork/Qt/2. Qt_core_modules/build-QtCoreModules-Desktop-Debug/CMakeFiles/install/local.dir
-C:/Work/HomeWork/Qt/2. Qt_core_modules/build-QtCoreModules-Desktop-Debug/CMakeFiles/install/strip.dir
-C:/Work/HomeWork/Qt/2. Qt_core_modules/build-QtCoreModules-Desktop-Debug/CMakeFiles/QtCoreModules_autogen.dir
