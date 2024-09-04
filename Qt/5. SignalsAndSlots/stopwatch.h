@@ -21,17 +21,25 @@ public:
     void StartTimerCircle();
     void StopTimerCircle();
 
+    //void updateCircleTime();
+
 private:
     int milliseconds, seconds, minutes;
+    int lap_milliseconds;
     int secondsCircle;
     bool resetTimer  = true;
+    int timeCircle;
+    int timePrevLap;
 
     QTimer* timer;
-    QTimer* timerCircle;
+
 
 public slots:
     void slotUpdateDataTime();
-    void slotUpdateCircleTime();
+    void updateCircleTime();
+
+signals:
+    void sig_SendCircleTime(QString str);
 
 };
 

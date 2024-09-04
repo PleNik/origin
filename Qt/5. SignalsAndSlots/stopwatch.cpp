@@ -3,12 +3,11 @@
 Stopwatch::Stopwatch(QObject* parent) : QObject{parent}
 {
     this->milliseconds = 0, this->seconds = 0; this->minutes = 0;
+    this->lap_milliseconds = 0;
     timer = new QTimer(this);
-    timerCircle = new QTimer(this);
 
-    connect (timer, SIGNAL(timeout()), SLOT(slotUpdateDataTime()));
-    connect(timerCircle, SIGNAL(timeout()), SLOT(slotUpdateCircleTime()));
-    //timerCircle->start(1000);
+    connect (timer, &QTimer::timeout, this, &Stopwatch::slotUpdateDataTime);
+
 }
 
 void Stopwatch::StartStopwath()
@@ -24,27 +23,30 @@ void Stopwatch::StopStopwatch()
 void Stopwatch::ResetStopwatch()
 {
     milliseconds = 0;
+    lap_milliseconds = 0;
     seconds = 0;
     minutes = 0;
-    resetTimer = false;
+    timePrevLap = 0;
+    //resetTimer = false;
 
 }
 
-void Stopwatch::StartTimerCircle()
+void Stopwatch::updateCircleTime()
 {
-    timerCircle->start(1000);
-}
+    timeCircle = lap_milliseconds - timePrevLap;
+    timePrevLap = lap_milliseconds;
 
-void Stopwatch::StopTimerCircle()
-{
-    timerCircle->stop();
-    secondsCircle = 0;
+    strTimeCircle = QString::number(timeCircle);
+    emit sig_SendCircleTime(strTimeCircle);
+
 }
 
 void Stopwatch::slotUpdateDataTime()
 {
 
     milliseconds++;
+
+    lap_milliseconds++;
 
    if(milliseconds >= 1000) {
        milliseconds = 0;
@@ -60,11 +62,5 @@ void Stopwatch::slotUpdateDataTime()
            + QString::number(milliseconds);
 
 
-}
-
-void Stopwatch::slotUpdateCircleTime()
-{
-    secondsCircle++;
-    strTimeCircle = QString::number(secondsCircle);
 }
 

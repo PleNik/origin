@@ -14,8 +14,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->setWindowTitle("Stopwatch");
 
-    connect(update_timer, SIGNAL(timeout()), SLOT(UpdateDataTime()));
+    connect (update_timer, &QTimer::timeout, this, &MainWindow::UpdateDataTime);
     update_timer->start(100);
+
+    connect(stopwatch, &Stopwatch::sig_SendCircleTime, this, &MainWindow::RcvCircleTime);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -30,18 +34,21 @@ void MainWindow::on_pb_startStop_clicked()
         buttonStartOrStop = !buttonStartOrStop;
         ui->pb_startStop->setText("СТОП");
         stopwatch->StartStopwath();
-        stopwatch->StartTimerCircle();
         ui->pb_circle->setEnabled(true);
 
     } else {
         buttonStartOrStop = !buttonStartOrStop;
         ui->pb_startStop->setText("СТАРТ");
         stopwatch->StopStopwatch();
-        stopwatch->StopTimerCircle();
         ui->pb_circle->setEnabled(false);
 
     }
 
+}
+
+void MainWindow::RcvCircleTime(QString str)
+{
+    ui->tb_timeCircle->append("Круг " + QString::number(numberCircle) + " " + " время: " + str + "мс");
 }
 
 void MainWindow::UpdateDataTime()
@@ -50,28 +57,21 @@ void MainWindow::UpdateDataTime()
     ui->lb_time->setText(str);
 }
 
+
 void MainWindow::on_pb_circle_clicked()
 {
     numberCircle ++;
-    stopwatch->StopTimerCircle();
-    QString str = stopwatch->strTimeCircle;
-    ui->tb_timeCircle->append("Круг " + QString::number(numberCircle) + ", время: " + str + " сек");
-    //ui->tb_timeCircle->append(str);
-    stopwatch->StartTimerCircle();
+    //QString str = stopwatch->strTimeCircle;
+    stopwatch->updateCircleTime();
 
 }
 
-
 void MainWindow::on_pb_clear_clicked()
 {
-    stopwatch->StopTimerCircle();
     ui->tb_timeCircle->clear();
 
     stopwatch->ResetStopwatch();
 
     numberCircle = 0;
-
-
-
 }
 

@@ -29,9 +29,10 @@ private:
 public slots:
     void UpdateDataTime();
 
+
 private slots:
     void on_pb_startStop_clicked();
-
+    void RcvCircleTime(QString str);
 
     void on_pb_circle_clicked();
     void on_pb_clear_clicked();
