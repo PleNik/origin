@@ -15,16 +15,16 @@ MainWindow::MainWindow(QWidget *parent)
         //на объект QChart.
         chartView = new QChartView(chart);
         //И создадим объект нашего класса.
-        graphClass = new GraphicChart(NUM_GRAPHS);
+        graphClass = std::make_unique<GraphicChart>(NUM_GRAPHS);
 
-        connect(graphClass, &GraphicChart::sig_dataIsReadyForRendering, this, &MainWindow::ViewGraph);
+        connect(graphClass.get(), &GraphicChart::sig_dataIsReadyForRendering, this, &MainWindow::ViewGraph);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
     delete chart;
-    delete graphClass;
+    //delete graphClass;
     delete chartView;
 }
 
@@ -201,9 +201,7 @@ void MainWindow::on_pb_path_clicked()
 
     ui->le_path->setText(pathToFile);
 
-    chart = new QChart( );
-    chartView = new QChartView(chart);
-    graphClass = new GraphicChart(NUM_GRAPHS);
+
 }
 
 /****************************************************/
@@ -256,6 +254,7 @@ void MainWindow::on_pb_start_clicked()
                                                 //Перед новой отрисовкой очистим графики
                                                 if(chart->series().isEmpty() == false){
                                                     graphClass->ClearGraph(chart);
+
                                                 }
 
                                                 //создадим контейнеры для хранения данных
@@ -292,7 +291,6 @@ void MainWindow::on_pb_start_clicked()
 
                                                 //Сигнал готовности данных для отрисовки
                                                 emit graphClass->sig_dataIsReadyForRendering();
-
 
                                             };
 

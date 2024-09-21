@@ -8,7 +8,6 @@
 #include <QtGlobal>
 #include <QtConcurrent>
 #include <algorithm>
-#include <QDebug>
 
 #include"graphicchart.h"
 
@@ -58,7 +57,7 @@ private:
     QVector<double> procesData;
     QVector<double> mins, maxs;
 
-    GraphicChart* graphClass;
+    std::unique_ptr<GraphicChart> graphClass;
     QChart* chart;
     QChartView* chartView;
 
