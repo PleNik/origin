@@ -3,7 +3,7 @@
 namespace RaceSimulatorLibraryDynamic {
     SIMULATORLIBRARYDY_API Centaur::Centaur () {
         speed = 15.0;
-        name = "Кентавр";
+        name = "centaur";
         travelTimeBeforeRest = 8.0;
         transportType = RaceSimulatorLibraryDynamic::TransportType::Ground;
         durationOfRest = 2;
