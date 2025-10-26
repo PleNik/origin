@@ -3,7 +3,7 @@
 namespace RaceSimulatorLibraryDynamic {
     SIMULATORLIBRARYDY_API Eagle::Eagle() {
         speed = 8.0;
-        name = "Ξπελ";
+        name = "ΠΡ€ΠµΠ»";
         transportType = RaceSimulatorLibraryDynamic::TransportType::Air;
         distanceReductionFactor = 6;
     }
