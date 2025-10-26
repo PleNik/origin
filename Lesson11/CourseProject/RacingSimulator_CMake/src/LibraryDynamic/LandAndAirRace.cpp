@@ -2,7 +2,7 @@
 
 namespace RaceSimulatorLibraryDynamic {
     SIMULATORLIBRARYDY_API LandAndAirRace::LandAndAirRace() {
-        nameRace = "Гонка для наземного и воздушного транспорта";
+        nameRace = "Р“РѕРЅРєР° РґР»СЏ РЅР°Р·РµРјРЅРѕРіРѕ Рё РІРѕР·РґСѓС€РЅРѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р°";
     }
 
     SIMULATORLIBRARYDY_API bool LandAndAirRace::AddTransport(RaceSimulatorLibraryDynamic::ITransport* transport) {
