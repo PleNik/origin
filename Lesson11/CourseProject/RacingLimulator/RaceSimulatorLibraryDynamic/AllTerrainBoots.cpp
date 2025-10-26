@@ -3,7 +3,7 @@
 namespace RaceSimulatorLibraryDynamic {
         SIMULATORLIBRARYDY_API AllTerrainBoots::AllTerrainBoots() {
             speed = 6.0;
-            name = "Ботинки-вездеходы";
+            name = "allTerrainBoots";
             travelTimeBeforeRest = 60.0;
             transportType = RaceSimulatorLibraryDynamic::TransportType::Ground;
         }
