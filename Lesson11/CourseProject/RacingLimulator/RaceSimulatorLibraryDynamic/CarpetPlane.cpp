@@ -3,7 +3,7 @@
 namespace RaceSimulatorLibraryDynamic {
     SIMULATORLIBRARYDY_API CarpetPlane::CarpetPlane() {
         speed = 10.0;
-        name = "Ковер-самолет";
+        name = "carpetPlane";
         transportType = RaceSimulatorLibraryDynamic::TransportType::Air;
     }
 
