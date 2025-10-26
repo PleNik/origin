@@ -1,38 +1,38 @@
 #pragma once
 
 namespace RaceSimulatorLibraryDynamic {
-    //тип гонки
+    //С‚РёРї РіРѕРЅРєРё
     enum class RaceType {
         LandRace = 1,
         AirRace,
         LandAndAirRace
     };
 
-    //меню зарегистрировать ТС/начать гонку
+    //РјРµРЅСЋ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РўРЎ/РЅР°С‡Р°С‚СЊ РіРѕРЅРєСѓ
     enum class RegTransportOrStartRace {
         RegTransport = 1,
         StartRace
     };
 
-    //меню регистрации транспортных средств
+    //РјРµРЅСЋ СЂРµРіРёСЃС‚СЂР°С†РёРё С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹С… СЃСЂРµРґСЃС‚РІ
     enum class RegTransports {
-        _CompleteRegistration,	//закончить регистрацию
-        _AllTerrainBoots,		//ботинки-вездеходы
-        _Broom,					//метла
-        _Camel,					//верблюд
-        _Centaur,				//кентавр
-        _Eagle,					//орел
-        _CamelFast,		    	//верблюд-быстроход
-        _CarpetPlane			//ковер-самолет
+        _CompleteRegistration,	//Г§Г ГЄГ®Г­Г·ГЁГІГј Г°ГҐГЈГЁГ±ГІГ°Г Г¶ГЁГѕ
+        _AllTerrainBoots,		//ГЎГ®ГІГЁГ­ГЄГЁ-ГўГҐГ§Г¤ГҐГµГ®Г¤Г»
+        _Broom,					//Г¬ГҐГІГ«Г 
+        _Camel,					//ГўГҐГ°ГЎГ«ГѕГ¤
+        _Centaur,				//ГЄГҐГ­ГІГ ГўГ°
+        _Eagle,					//Г®Г°ГҐГ«
+        _CamelFast,		    	//ГўГҐГ°ГЎГ«ГѕГ¤-ГЎГ»Г±ГІГ°Г®ГµГ®Г¤
+        _CarpetPlane			//ГЄГ®ГўГҐГ°-Г±Г Г¬Г®Г«ГҐГІ
     };
 
-    //тип транспорта
+    //С‚РёРї С‚СЂР°РЅСЃРїРѕСЂС‚Р°
     enum class TransportType {
         Ground,
         Air
     };
 
-    //меню: еще одна гонка/выход
+    //РјРµРЅСЋ: РµС‰Рµ РѕРґРЅР° РіРѕРЅРєР°/РІС‹С…РѕРґ
     enum class OneMoreRaceOrExit {
         OneMoreRace = 1,
         Exit
