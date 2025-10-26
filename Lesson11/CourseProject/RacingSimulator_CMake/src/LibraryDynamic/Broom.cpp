@@ -3,7 +3,7 @@
 namespace RaceSimulatorLibraryDynamic {
     SIMULATORLIBRARYDY_API Broom::Broom() {
         speed = 20.0;
-        name = "Метла";
+        name = "РњРµС‚Р»Р°";
         transportType = RaceSimulatorLibraryDynamic::TransportType::Air;
     }
 
