@@ -5,7 +5,7 @@
 namespace RaceSimulatorLibraryDynamic {
     class AirTransport : public ITransport {        
     protected:
-        int distanceReductionFactor;  //коэффициент сокращения расстояния
+        int distanceReductionFactor; //РєРѕСЌС„С„РёС†РёРµРЅС‚ СЃРѕРєСЂР°С‰РµРЅРёСЏ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ
     };
 
 }
