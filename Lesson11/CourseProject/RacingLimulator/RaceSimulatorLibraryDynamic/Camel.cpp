@@ -17,7 +17,7 @@ namespace RaceSimulatorLibraryDynamic {
 
     SIMULATORLIBRARYDY_API Camel::Camel() {
         speed = 10.0;
-        name = "Верблюд";
+        name = "camel";
         travelTimeBeforeRest = 30.0;
         transportType = RaceSimulatorLibraryDynamic::TransportType::Ground;
     }
