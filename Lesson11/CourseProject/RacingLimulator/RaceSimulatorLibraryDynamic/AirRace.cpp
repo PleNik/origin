@@ -2,7 +2,7 @@
 
 namespace RaceSimulatorLibraryDynamic {
     SIMULATORLIBRARYDY_API AirRace::AirRace() {
-        nameRace = "Гонка для воздушного транспорта";
+        nameRace = "Р“РѕРЅРєР° РґР»СЏ РІРѕР·РґСѓС€РЅРѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р°";
     }
 
     SIMULATORLIBRARYDY_API bool AirRace::AddTransport(ITransport* transport) {
