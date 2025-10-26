@@ -1,20 +1,20 @@
 #include "Functions.h"
 
-//установка дистанции
+//СѓСЃС‚Р°РЅРѕРІРєР° РґРёСЃС‚Р°РЅС†РёРё
 void setDistance(RaceSimulatorLibraryDynamic::Race* raceType) {
     double userInputDistance;
 
     while (true) {
 
-        std::cout << "\nУкажите длину дистанции (должна быть положительна): ";
+        std::cout << "\nРЈРєР°Р¶РёС‚Рµ РґР»РёРЅСѓ РґРёСЃС‚Р°РЅС†РёРё (РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅР°): ";
         std::cin >> userInputDistance;
         if (userInputDistance < 0) {
-            std::cout << "Ошибка! Дистанция не может быть отрицательной!" << std::endl;
+            std::cout << "РћС€РёР±РєР°! Р”РёСЃС‚Р°РЅС†РёСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№!" << std::endl;
             std::cin.clear();
             std::cin.ignore(10000, '\n');
         }
         else if (std::cin.fail()) {
-            std::cout << "Ошибка! Введено не число!" << std::endl;
+            std::cout << "РћС€РёР±РєР°! Р’РІРµРґРµРЅРѕ РЅРµ С‡РёСЃР»Рѕ!" << std::endl;
             std::cin.clear();
             std::cin.ignore(10000, '\n');
         }
@@ -27,27 +27,27 @@ void setDistance(RaceSimulatorLibraryDynamic::Race* raceType) {
 
 }
 
-//меню регистрация ТС либо начало гонки
+//РјРµРЅСЋ СЂРµРіРёСЃС‚СЂР°С†РёСЏ РўРЎ Р»РёР±Рѕ РЅР°С‡Р°Р»Рѕ РіРѕРЅРєРё
 RaceSimulatorLibraryDynamic::RegTransportOrStartRace regTransportOrStartRace(RaceSimulatorLibraryDynamic::Race* raceType) {
     int unsigned userInputRegTransportOrRunRace;
 
     while (true) {
-        std::cout << "\nДолжно быть зарегистировано хотя бы 2 транспортных средства";
-        std::cout << "\n1. Зарегистрировать транспорт" << std::endl;
-        if (raceType->GetArrTransports().size() >= 2) //если зарегистрировано меньше 2-х ТС, то 2 пункт игнонировать
-            std::cout << "2. Начать гонку" << std::endl;
-        std::cout << "Выберите действие: ";
+        std::cout << "\nР”РѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р·Р°СЂРµРіРёСЃС‚РёСЂРѕРІР°РЅРѕ С…РѕС‚СЏ Р±С‹ 2 С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹С… СЃСЂРµРґСЃС‚РІР°";
+        std::cout << "\n1. Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ С‚СЂР°РЅСЃРїРѕСЂС‚" << std::endl;
+        if (raceType->GetArrTransports().size() >= 2) //РµСЃР»Рё Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРѕ РјРµРЅСЊС€Рµ 2-С… РўРЎ, С‚Рѕ 2 РїСѓРЅРєС‚ РёРіРЅРѕРЅРёСЂРѕРІР°С‚СЊ
+            std::cout << "2. РќР°С‡Р°С‚СЊ РіРѕРЅРєСѓ" << std::endl;
+        std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ";
 
         std::cin >> userInputRegTransportOrRunRace;
         RaceSimulatorLibraryDynamic::RegTransportOrStartRace regOrStartRace = static_cast<RaceSimulatorLibraryDynamic::RegTransportOrStartRace>(userInputRegTransportOrRunRace);
 
         if (regOrStartRace == RaceSimulatorLibraryDynamic::RegTransportOrStartRace::StartRace && raceType->GetArrTransports().size() < 2) {
-            std::cout << "Ошибка! Зарегистрировано менее 2 транспортных средств" << std::endl;
+            std::cout << "РћС€РёР±РєР°! Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРѕ РјРµРЅРµРµ 2 С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹С… СЃСЂРµРґСЃС‚РІ" << std::endl;
             std::cin.clear();
             std::cin.ignore(10000, '\n');
         }
         else if (regOrStartRace < RaceSimulatorLibraryDynamic::RegTransportOrStartRace::RegTransport || regOrStartRace > RaceSimulatorLibraryDynamic::RegTransportOrStartRace::StartRace) {
-            std::cout << "Ошибка! Ввведено некорректное значение" << std::endl;
+            std::cout << "РћС€РёР±РєР°! Р’РІРІРµРґРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ" << std::endl;
             std::cin.clear();
             std::cin.ignore(10000, '\n');
         }
@@ -56,21 +56,21 @@ RaceSimulatorLibraryDynamic::RegTransportOrStartRace regTransportOrStartRace(Rac
     }
 }
 
-//выбор типа гонки
+//РІС‹Р±РѕСЂ С‚РёРїР° РіРѕРЅРєРё
 RaceSimulatorLibraryDynamic::RaceType SelectRaceType() {
     while (true) {
-        std::cout << "1. Гонка для наземного транспорта" << std::endl;
-        std::cout << "2. Гонка для воздушного транспорта" << std::endl;
-        std::cout << "3. Гонка для наземного и воздушного транспорта" << std::endl;
+        std::cout << "1. Р“РѕРЅРєР° РґР»СЏ РЅР°Р·РµРјРЅРѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р°" << std::endl;
+        std::cout << "2. Р“РѕРЅРєР° РґР»СЏ РІРѕР·РґСѓС€РЅРѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р°" << std::endl;
+        std::cout << "3. Р“РѕРЅРєР° РґР»СЏ РЅР°Р·РµРјРЅРѕРіРѕ Рё РІРѕР·РґСѓС€РЅРѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р°" << std::endl;
 
-        std::cout << "Выберите тип гонки: ";
+        std::cout << "Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РіРѕРЅРєРё: ";
 
-        int unsigned userInputRaceType; //пользовательский ввод типа гонки
+        int unsigned userInputRaceType; //РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ С‚РёРїР° РіРѕРЅРєРё
         std::cin >> userInputRaceType;
         RaceSimulatorLibraryDynamic::RaceType race = static_cast<RaceSimulatorLibraryDynamic::RaceType>(userInputRaceType);
 
         if (race < RaceSimulatorLibraryDynamic::RaceType::LandRace || race > RaceSimulatorLibraryDynamic::RaceType::LandAndAirRace) {
-            std::cout << "Неверный ввод типа гонки!" << std::endl;
+            std::cout << "РќРµРІРµСЂРЅС‹Р№ РІРІРѕРґ С‚РёРїР° РіРѕРЅРєРё!" << std::endl;
             std::cin.clear();
             std::cin.ignore(10000, '\n');
         }
@@ -79,7 +79,7 @@ RaceSimulatorLibraryDynamic::RaceType SelectRaceType() {
     }
 }
 
-//проверка зарегистрирован ли ранее выбранный транспорт
+//РїСЂРѕРІРµСЂРєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ Р»Рё СЂР°РЅРµРµ РІС‹Р±СЂР°РЅРЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚
 bool TranspotIsAlreadyRegistered(RaceSimulatorLibraryDynamic::Race* raceType, std::string nameOfTransport) {
     bool transpotIsAlreadyRegistered = false;
 
@@ -94,17 +94,17 @@ bool TranspotIsAlreadyRegistered(RaceSimulatorLibraryDynamic::Race* raceType, st
 }
 
 
-//регистрация транспорта на гонку
+//СЂРµРіРёСЃС‚СЂР°С†РёСЏ С‚СЂР°РЅСЃРїРѕСЂС‚Р° РЅР° РіРѕРЅРєСѓ
 void RegTransport(RaceSimulatorLibraryDynamic::Race* race) {
     bool registrationCompleted = false;
 
     unsigned userInputTypeTransportOrExitRegistration;
 
     while (!registrationCompleted) {
-        std::cout << "\n" << race->GetNameRace() << ". Расстояние: " << race->GetDistance() << std::endl;
+        std::cout << "\n" << race->GetNameRace() << ". Р Р°СЃСЃС‚РѕСЏРЅРёРµ: " << race->GetDistance() << std::endl;
 
         if (race->GetArrTransports().size()) {
-            std::cout << "Зарегистрированные транспортные средства: ";
+            std::cout << "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹Рµ СЃСЂРµРґСЃС‚РІР°: ";
             for (int i = 0; i < race->GetArrTransports().size(); i++) {
                 std::cout << race->GetArrTransports()[i]->GetNameTransport();
                 if (i < race->GetArrTransports().size() - 1) std::cout << ", ";
@@ -112,25 +112,25 @@ void RegTransport(RaceSimulatorLibraryDynamic::Race* race) {
             std::cout << std::endl;
         }
 
-        std::cout << "1. Ботинки-вездеходы" << std::endl;
-        std::cout << "2. Метла" << std::endl;
-        std::cout << "3. Верблюд" << std::endl;
-        std::cout << "4. Кенатавр" << std::endl;
-        std::cout << "5. Орел" << std::endl;
-        std::cout << "6. Верблюд-бысроход" << std::endl;
-        std::cout << "7. Ковер-самолет" << std::endl;
-        std::cout << "0. Закончить регистрацию" << std::endl;
-        std::cout << "Выберите транспорт или 0 для окончания процесса регистрации: ";
+        std::cout << "1. Р‘РѕС‚РёРЅРєРё-РІРµР·РґРµС…РѕРґС‹" << std::endl;
+        std::cout << "2. РњРµС‚Р»Р°" << std::endl;
+        std::cout << "3. Р’РµСЂР±Р»СЋРґ" << std::endl;
+        std::cout << "4. РљРµРЅР°С‚Р°РІСЂ" << std::endl;
+        std::cout << "5. РћСЂРµР»" << std::endl;
+        std::cout << "6. Р’РµСЂР±Р»СЋРґ-Р±С‹СЃСЂРѕС…РѕРґ" << std::endl;
+        std::cout << "7. РљРѕРІРµСЂ-СЃР°РјРѕР»РµС‚" << std::endl;
+        std::cout << "0. Р—Р°РєРѕРЅС‡РёС‚СЊ СЂРµРіРёСЃС‚СЂР°С†РёСЋ" << std::endl;
+        std::cout << "Р’С‹Р±РµСЂРёС‚Рµ С‚СЂР°РЅСЃРїРѕСЂС‚ РёР»Рё 0 РґР»СЏ РѕРєРѕРЅС‡Р°РЅРёСЏ РїСЂРѕС†РµСЃСЃР° СЂРµРіРёСЃС‚СЂР°С†РёРё: ";
 
 
         std::cin >> userInputTypeTransportOrExitRegistration;
         RaceSimulatorLibraryDynamic::RegTransports regTransports = static_cast<RaceSimulatorLibraryDynamic::RegTransports>(userInputTypeTransportOrExitRegistration);
 
         if (regTransports < RaceSimulatorLibraryDynamic::RegTransports::_CompleteRegistration || regTransports > RaceSimulatorLibraryDynamic::RegTransports::_CarpetPlane)
-            std::cout << "Ошибка! Введенное значение не соответствуте ни одному из заданных" << std::endl;
+            std::cout << "РћС€РёР±РєР°! Р’РІРµРґРµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓС‚Рµ РЅРё РѕРґРЅРѕРјСѓ РёР· Р·Р°РґР°РЅРЅС‹С…" << std::endl;
 
         if (regTransports == RaceSimulatorLibraryDynamic::RegTransports::_CompleteRegistration && race->GetArrTransports().size() < 2)
-            std::cout << "\nВы не можете прервать процесс регистрации. Зарегистрировано менее 2 транспортных средств" << std::endl;
+            std::cout << "\nР’С‹ РЅРµ РјРѕР¶РµС‚Рµ РїСЂРµСЂРІР°С‚СЊ РїСЂРѕС†РµСЃСЃ СЂРµРіРёСЃС‚СЂР°С†РёРё. Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРѕ РјРµРЅРµРµ 2 С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹С… СЃСЂРµРґСЃС‚РІ" << std::endl;
 
         else {
             switch (regTransports) {
@@ -140,108 +140,108 @@ void RegTransport(RaceSimulatorLibraryDynamic::Race* race) {
                 break;
 
             case RaceSimulatorLibraryDynamic::RegTransports::_AllTerrainBoots:
-                if (TranspotIsAlreadyRegistered(race, "Ботинки-вездеходы"))
-                    std::cout << "\nБотинки-вездеходы уже зарегистрированы!" << std::endl;
+                if (TranspotIsAlreadyRegistered(race, "Р‘РѕС‚РёРЅРєРё-РІРµР·РґРµС…РѕРґС‹"))
+                    std::cout << "\nР‘РѕС‚РёРЅРєРё-РІРµР·РґРµС…РѕРґС‹ СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹!" << std::endl;
                 else {
                     RaceSimulatorLibraryDynamic::ITransport* allTerrainBoots = new  RaceSimulatorLibraryDynamic::AllTerrainBoots;
-                    if (race->AddTransport(allTerrainBoots)) {//если транспорт не является типом race 
-                        std::cout << "\nПопытка зарегистрировать неправильный тип транспортного средства!" << std::endl;
+                    if (race->AddTransport(allTerrainBoots)) {//РµСЃР»Рё С‚СЂР°РЅСЃРїРѕСЂС‚ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‚РёРїРѕРј race 
+                        std::cout << "\nРџРѕРїС‹С‚РєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РёРї С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°!" << std::endl;
                         delete allTerrainBoots;
                         allTerrainBoots = nullptr;
                     }
                     else
-                        std::cout << "\n" << allTerrainBoots->GetNameTransport() << " успешно зарегистрирован!" << std::endl;
+                        std::cout << "\n" << allTerrainBoots->GetNameTransport() << " СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 }
                 break;
 
             case RaceSimulatorLibraryDynamic::RegTransports::_Broom:
-                if (TranspotIsAlreadyRegistered(race, "Метла"))
-                    std::cout << "\nМетла уже зарегистрирована!" << std::endl;
+                if (TranspotIsAlreadyRegistered(race, "РњРµС‚Р»Р°"))
+                    std::cout << "\nРњРµС‚Р»Р° СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅР°!" << std::endl;
                 else {
                     RaceSimulatorLibraryDynamic::ITransport* broom = new RaceSimulatorLibraryDynamic::Broom;
-                    if (race->AddTransport(broom)) {//если транспорт не является типом race 
-                        std::cout << "\nПопытка зарегистрировать неправильный тип транспортного средства!" << std::endl;
+                    if (race->AddTransport(broom)) {//РµСЃР»Рё С‚СЂР°РЅСЃРїРѕСЂС‚ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‚РёРїРѕРј race 
+                        std::cout << "\nРџРѕРїС‹С‚РєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РёРї С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°!" << std::endl;
                         delete broom;
                         broom = nullptr;
                     }
                     else
-                        std::cout << "\n" << broom->GetNameTransport() << " успешно зарегистрирован!" << std::endl;
+                        std::cout << "\n" << broom->GetNameTransport() << " СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 }
                 break;
 
             case RaceSimulatorLibraryDynamic::RegTransports::_Camel:
-                if (TranspotIsAlreadyRegistered(race, "Верблюд"))
-                    std::cout << "\nВерблюд уже зарегистрирован!" << std::endl;
+                if (TranspotIsAlreadyRegistered(race, "Р’РµСЂР±Р»СЋРґ"))
+                    std::cout << "\nР’РµСЂР±Р»СЋРґ СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 else {
                     RaceSimulatorLibraryDynamic::ITransport* camel = new RaceSimulatorLibraryDynamic::Camel;
-                    if (race->AddTransport(camel)) {//если транспорт не является типом race 
-                        std::cout << "\nПопытка зарегистрировать неправильный тип транспортного средства!" << std::endl;
+                    if (race->AddTransport(camel)) {//РµСЃР»Рё С‚СЂР°РЅСЃРїРѕСЂС‚ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‚РёРїРѕРј race 
+                        std::cout << "\nРџРѕРїС‹С‚РєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РёРї С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°!" << std::endl;
                         delete camel;
                         camel = nullptr;
                     }
                     else
-                        std::cout << "\n" << camel->GetNameTransport() << " успешно зарегистрирован!" << std::endl;
+                        std::cout << "\n" << camel->GetNameTransport() << " СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 }
                 break;
 
             case RaceSimulatorLibraryDynamic::RegTransports::_Centaur:
-                if (TranspotIsAlreadyRegistered(race, "Кентавр"))
-                    std::cout << "\nКентавр уже зарегистрирован!" << std::endl;
+                if (TranspotIsAlreadyRegistered(race, "РљРµРЅС‚Р°РІСЂ"))
+                    std::cout << "\nРљРµРЅС‚Р°РІСЂ СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 else {
-                    RaceSimulatorLibraryDynamic::ITransport* сentaur = new RaceSimulatorLibraryDynamic::Centaur;
-                    if (race->AddTransport(сentaur)) {//если транспорт не является типом race 
-                        std::cout << "\nПопытка зарегистрировать неправильный тип транспортного средства!" << std::endl;
-                        delete сentaur;
-                        сentaur = nullptr;
+                    RaceSimulatorLibraryDynamic::ITransport* СЃentaur = new RaceSimulatorLibraryDynamic::Centaur;
+                    if (race->AddTransport(СЃentaur)) {//РµСЃР»Рё С‚СЂР°РЅСЃРїРѕСЂС‚ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‚РёРїРѕРј race 
+                        std::cout << "\nРџРѕРїС‹С‚РєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РёРї С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°!" << std::endl;
+                        delete СЃentaur;
+                        СЃentaur = nullptr;
                     }
                     else
-                        std::cout << "\n" << сentaur->GetNameTransport() << " успешно зарегистрирован!" << std::endl;
+                        std::cout << "\n" << СЃentaur->GetNameTransport() << " СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 }
                 break;
 
             case RaceSimulatorLibraryDynamic::RegTransports::_Eagle:
-                if (TranspotIsAlreadyRegistered(race, "Орел"))
-                    std::cout << "\nОрел уже зарегистрирован!" << std::endl;
+                if (TranspotIsAlreadyRegistered(race, "РћСЂРµР»"))
+                    std::cout << "\nРћСЂРµР» СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 else {
                     RaceSimulatorLibraryDynamic::ITransport* eagle = new RaceSimulatorLibraryDynamic::Eagle;
-                    if (race->AddTransport(eagle)) {//если транспорт не является типом race 
-                        std::cout << "\nПопытка зарегистрировать неправильный тип транспортного средства!" << std::endl;
+                    if (race->AddTransport(eagle)) {//РµСЃР»Рё С‚СЂР°РЅСЃРїРѕСЂС‚ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‚РёРїРѕРј race 
+                        std::cout << "\nРџРѕРїС‹С‚РєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РёРї С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°!" << std::endl;
                         delete eagle;
                         eagle = nullptr;
                     }
                     else
-                        std::cout << "\n" << eagle->GetNameTransport() << " успешно зарегистрирован!" << std::endl;
+                        std::cout << "\n" << eagle->GetNameTransport() << " СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 }
                 break;
 
             case RaceSimulatorLibraryDynamic::RegTransports::_CamelFast:
-                if (TranspotIsAlreadyRegistered(race, "Верблюд-быстроход"))
-                    std::cout << "\nВерблюд-быстроход уже зарегистрирован!" << std::endl;
+                if (TranspotIsAlreadyRegistered(race, "Р’РµСЂР±Р»СЋРґ-Р±С‹СЃС‚СЂРѕС…РѕРґ"))
+                    std::cout << "\nР’РµСЂР±Р»СЋРґ-Р±С‹СЃС‚СЂРѕС…РѕРґ СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 else {
                     RaceSimulatorLibraryDynamic::ITransport* camelFast = new RaceSimulatorLibraryDynamic::CamelFast;
-                    if (race->AddTransport(camelFast)) {//если транспорт не является типом race 
-                        std::cout << "\nПопытка зарегистрировать неправильный тип транспортного средства!" << std::endl;
+                    if (race->AddTransport(camelFast)) {//РµСЃР»Рё С‚СЂР°РЅСЃРїРѕСЂС‚ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‚РёРїРѕРј race 
+                        std::cout << "\nРџРѕРїС‹С‚РєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РёРї С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°!" << std::endl;
                         delete camelFast;
                         camelFast = nullptr;
                     }
                     else
-                        std::cout << "\n" << camelFast->GetNameTransport() << " успешно зарегистрирован!" << std::endl;
+                        std::cout << "\n" << camelFast->GetNameTransport() << " СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
 
                 }
                 break;
 
             case RaceSimulatorLibraryDynamic::RegTransports::_CarpetPlane:
-                if (TranspotIsAlreadyRegistered(race, "Ковер-самолет"))
-                    std::cout << "\nКовер-самолет уже зарегистрирован!" << std::endl;
+                if (TranspotIsAlreadyRegistered(race, "РљРѕРІРµСЂ-СЃР°РјРѕР»РµС‚"))
+                    std::cout << "\nРљРѕРІРµСЂ-СЃР°РјРѕР»РµС‚ СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 else {
                     RaceSimulatorLibraryDynamic::ITransport* carpetPlane = new RaceSimulatorLibraryDynamic::CarpetPlane;
-                    if (race->AddTransport(carpetPlane)) {//если транспорт не является типом race 
-                        std::cout << "\nПопытка зарегистрировать неправильный тип транспортного средства!" << std::endl;
+                    if (race->AddTransport(carpetPlane)) {//РµСЃР»Рё С‚СЂР°РЅСЃРїРѕСЂС‚ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‚РёРїРѕРј race 
+                        std::cout << "\nРџРѕРїС‹С‚РєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РёРї С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°!" << std::endl;
                         delete carpetPlane;
                         carpetPlane = nullptr;
                     }
                     else
-                        std::cout << "\n" << carpetPlane->GetNameTransport() << " успешно зарегистрирован!" << std::endl;
+                        std::cout << "\n" << carpetPlane->GetNameTransport() << " СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
                 }
 
 
@@ -251,7 +251,7 @@ void RegTransport(RaceSimulatorLibraryDynamic::Race* race) {
     }
 }
 
-//старт гонки, подсчет и вывод результатов
+//СЃС‚Р°СЂС‚ РіРѕРЅРєРё, РїРѕРґСЃС‡РµС‚ Рё РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
 void startRace(RaceSimulatorLibraryDynamic::Race* raceType) {
 
     int size = raceType->GetArrTransports().size();
@@ -273,33 +273,33 @@ void startRace(RaceSimulatorLibraryDynamic::Race* raceType) {
         j_size--;
     }
 
-    //вывод результатов
-    std::cout << "\nРезультаты гонки:" << std::endl;
+    //РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
+    std::cout << "\nР РµР·СѓР»СЊС‚Р°С‚С‹ РіРѕРЅРєРё:" << std::endl;
     for (int i = 0; i < size; i++) {
-        std::cout << i + 1 << ". " << resultArr[i]->GetNameTransport() << ". Время: " << resultArr[i]->RaceTime(distance) << std::endl;
+        std::cout << i + 1 << ". " << resultArr[i]->GetNameTransport() << ". Р’СЂРµРјСЏ: " << resultArr[i]->RaceTime(distance) << std::endl;
     }
 
-    //удаление временных векторов
+    //СѓРґР°Р»РµРЅРёРµ РІСЂРµРјРµРЅРЅС‹С… РІРµРєС‚РѕСЂРѕРІ
     for (int i = 0; i < size; i++) {
         delete resultArr[i];
         resultArr[i] = nullptr;
     }
 }
 
-//меню: еще одна гонка/выход из программы
+//РјРµРЅСЋ: РµС‰Рµ РѕРґРЅР° РіРѕРЅРєР°/РІС‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹
 RaceSimulatorLibraryDynamic::OneMoreRaceOrExit MenuPlayOrExit() {
     unsigned userInput;
 
     while (true) {
-        std::cout << "\n1. Провести еще одну гонку" << std::endl;
-        std::cout << "2. Выйти" << std::endl;
-        std::cout << "Выберите действие: ";
+        std::cout << "\n1. РџСЂРѕРІРµСЃС‚Рё РµС‰Рµ РѕРґРЅСѓ РіРѕРЅРєСѓ" << std::endl;
+        std::cout << "2. Р’С‹Р№С‚Рё" << std::endl;
+        std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ";
 
         std::cin >> userInput;
         RaceSimulatorLibraryDynamic::OneMoreRaceOrExit oneMoreRaceOrExit = static_cast<RaceSimulatorLibraryDynamic::OneMoreRaceOrExit>(userInput);
 
         if (oneMoreRaceOrExit <  RaceSimulatorLibraryDynamic::OneMoreRaceOrExit::OneMoreRace || oneMoreRaceOrExit > RaceSimulatorLibraryDynamic::OneMoreRaceOrExit::Exit) {
-            std::cout << "Ошибка! Введено недопустимое значение" << std::endl;
+            std::cout << "РћС€РёР±РєР°! Р’РІРµРґРµРЅРѕ РЅРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ" << std::endl;
             std::cin.clear();
             std::cin.ignore(10000, '\n');
         }
@@ -308,7 +308,7 @@ RaceSimulatorLibraryDynamic::OneMoreRaceOrExit MenuPlayOrExit() {
     }
 }
 
-//очистка списка зарегистрированных ТС
+//РѕС‡РёСЃС‚РєР° СЃРїРёСЃРєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… РўРЎ
 void deleteTransports(RaceSimulatorLibraryDynamic::Race* raceType) {
     int size = raceType->GetArrTransports().size();
     for (int i = 0; i < size; i++) {
@@ -316,9 +316,9 @@ void deleteTransports(RaceSimulatorLibraryDynamic::Race* raceType) {
     }
 }
 
-//реализация выбранной гонки
+//СЂРµР°Р»РёР·Р°С†РёСЏ РІС‹Р±СЂР°РЅРЅРѕР№ РіРѕРЅРєРё
 void RaceSelected(RaceSimulatorLibraryDynamic::Race* raceType) {
-    setDistance(raceType); //установка дистанции
+    setDistance(raceType); //СѓСЃС‚Р°РЅРѕРІРєР° РґРёСЃС‚Р°РЅС†РёРё
 
     while (regTransportOrStartRace(raceType) == RaceSimulatorLibraryDynamic::RegTransportOrStartRace::RegTransport) {
         RegTransport(raceType);
