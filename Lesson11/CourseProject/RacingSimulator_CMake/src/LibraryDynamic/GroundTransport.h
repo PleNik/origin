@@ -6,8 +6,8 @@ namespace RaceSimulatorLibraryDynamic {
 
     class GroundTransport : public ITransport {
     protected:
-        double travelTimeBeforeRest; //время движения до отдыха
-        double durationOfRest; //время отдыха
+        double travelTimeBeforeRest; //РІСЂРµРјСЏ РґРІРёР¶РµРЅРёСЏ РґРѕ РѕС‚РґС‹С…Р°
+        double durationOfRest; //РІСЂРµРјСЏ РѕС‚РґС‹С…Р°
 
     };
 }
