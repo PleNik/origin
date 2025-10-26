@@ -1,4 +1,4 @@
-#pragma once
+pragma once
 
 #include "CamelFast.h"
 #include "Centaur.h"
@@ -11,30 +11,30 @@
 #include "AirRace.h"
 #include "LandAndAirRace.h"
 
-//установка дистанции
+//СѓСЃС‚Р°РЅРѕРІРєР° РґРёСЃС‚Р°РЅС†РёРё
 void setDistance(RaceSimulatorLibraryDynamic::Race* raceType);
 
-//меню регистрация ТС либо начало гонки
+//РјРµРЅСЋ СЂРµРіРёСЃС‚СЂР°С†РёВ¤ вЂњвЂ” Р»РёР±Рѕ РЅР°С‡Р°Р»Рѕ РіРѕРЅРєРё
 RaceSimulatorLibraryDynamic::RegTransportOrStartRace regTransportOrStartRace(RaceSimulatorLibraryDynamic::Race* raceType);
 
-//выбор типа гонки
+//РІС‹Р±РѕСЂ С‚РёРїР° РіРѕРЅРєРё
 RaceSimulatorLibraryDynamic::RaceType SelectRaceType();
 
-//проверка зарегистрирован ли ранее выбранный транспорт
+//РїСЂРѕРІРµСЂРєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ Р»Рё СЂР°РЅРµРµ РІС‹Р±СЂР°РЅРЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚
 bool TranspotIsAlreadyRegistered(RaceSimulatorLibraryDynamic::Race* raceType, std::string nameOfTransport);
 
 
-//регистрация транспорта на гонку
+//СЂРµРіРёСЃС‚СЂР°С†РёВ¤ С‚СЂР°РЅСЃРїРѕСЂС‚Р° РЅР° РіРѕРЅРєСѓ
 void RegTransport(RaceSimulatorLibraryDynamic::Race* race);
 
-//старт гонки, подсчет и вывод результатов
+//СЃС‚Р°СЂС‚ РіРѕРЅРєРё, РїРѕРґСЃС‡РµС‚ Рё РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
 void startRace(RaceSimulatorLibraryDynamic::Race* raceType);
 
-//меню: еще одна гонка/выход из программы
+//РјРµРЅСЋ: РµС‰Рµ РѕРґРЅР° РіРѕРЅРєР°/РІС‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹
 RaceSimulatorLibraryDynamic::OneMoreRaceOrExit MenuPlayOrExit();
 
-//очистка списка зарегистрированных ТС
+//РѕС‡РёСЃС‚РєР° СЃРїРёСЃРєР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… вЂњвЂ”
 void deleteTransports(RaceSimulatorLibraryDynamic::Race* raceType);
 
-//реализация выбранной гонки
+//СЂРµР°Р»РёР·Р°С†РёВ¤ РІС‹Р±СЂР°РЅРЅРѕР№ РіРѕРЅРєРё
 void RaceSelected(RaceSimulatorLibraryDynamic::Race* raceType);
