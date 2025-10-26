@@ -3,7 +3,7 @@
 namespace RaceSimulatorLibraryDynamic {
     SIMULATORLIBRARYDY_API CamelFast::CamelFast() {
         speed = 40.0;
-        name = "Верблюд-быстроход";
+        name = "Р’РµСЂР±Р»СЋРґ-Р±С‹СЃС‚СЂРѕС…РѕРґ";
         travelTimeBeforeRest = 10.0;
         transportType = RaceSimulatorLibraryDynamic::TransportType::Ground;
     }
